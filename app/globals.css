@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   GLOBAL TEMEL STİLLER
+   ============================================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Sticky header'a göre anchor kaymalarını ayarla */
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-background text-ink font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+    text-wrap: balance;
+  }
+
+  /* Klavye ile gezinenler için görünür focus halkası (erişilebilirlik) */
+  :focus-visible {
+    outline: 3px solid #c0392b;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* ============================================================
+   ORTAK BİLEŞEN SINIFLARI
+   ============================================================ */
+
+@layer components {
+  /* Sayfa içeriği için ortalanmış konteyner */
+  .container-site {
+    @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section dikey boşlukları */
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  /* Buton temel stili */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-btn px-6 py-3
+      text-base font-semibold leading-none transition
+      focus-visible:outline-offset-4 disabled:opacity-60;
+  }
+
+  /* WhatsApp yeşil buton */
+  .btn-whatsapp {
+    @apply btn bg-whatsapp text-white hover:bg-whatsappDark active:scale-[0.98];
+  }
+
+  /* Kırmızı marka butonu */
+  .btn-brand {
+    @apply btn bg-brand text-white hover:bg-brand-dark active:scale-[0.98];
+  }
+
+  /* Beyaz / dış çizgili buton (kırmızı zemin üzerinde) */
+  .btn-outline-white {
+    @apply btn border-2 border-white bg-transparent text-white hover:bg-white hover:text-brand;
+  }
+
+  /* İkincil (çizgili) buton */
+  .btn-outline {
+    @apply btn border-2 border-brand bg-transparent text-brand hover:bg-brand hover:text-white;
+  }
+
+  /* H2 section başlıkları için ortak stil */
+  .h2-title {
+    @apply text-h2-m sm:text-h2-d text-ink;
+  }
+
+  /* Section üstü küçük etiket */
+  .eyebrow {
+    @apply mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-brand;
+  }
+}
+
+/* ============================================================
+   ERİŞİLEBİLİRLİK: hareketi azalt tercihi
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
