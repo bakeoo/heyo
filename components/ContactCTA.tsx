@@ -3,17 +3,16 @@
 import {
   WHATSAPP_NUMBER,
   PHONE_NUMBER,
-  EMAIL,
   WA_MESSAGES,
   waLink,
   telLink,
 } from '@/lib/constants'
 import { trackContactClick } from '@/lib/analytics'
-import { WhatsAppIcon, PhoneIcon, MailIcon } from './icons'
+import { WhatsAppIcon, PhoneIcon } from './icons'
 
 /**
  * İletişim / CTA section.
- * Büyük kırmızı arka plan + 3 iletişim kartı (WhatsApp / Telefon / E-posta).
+ * Büyük kırmızı arka plan + 2 iletişim kartı (WhatsApp / Telefon).
  */
 export default function ContactCTA() {
   return (
@@ -30,7 +29,7 @@ export default function ContactCTA() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2">
           {/* WhatsApp kartı */}
           <div className="flex flex-col items-center rounded-card bg-white/10 p-8 text-center backdrop-blur">
             <WhatsAppIcon className="h-10 w-10 text-white" />
@@ -65,19 +64,6 @@ export default function ContactCTA() {
             </a>
           </div>
 
-          {/* E-posta kartı */}
-          <div className="flex flex-col items-center rounded-card bg-white/10 p-8 text-center backdrop-blur">
-            <MailIcon className="h-10 w-10 text-white" />
-            <h3 className="mt-4 font-heading text-lg font-semibold">E-posta</h3>
-            <p className="mt-1 break-all text-white/90">{EMAIL}</p>
-            <a
-              href={`mailto:${EMAIL}`}
-              onClick={() => trackContactClick('email', { location: 'contact' })}
-              className="btn mt-6 w-full bg-white text-brand hover:bg-white/90"
-            >
-              Mail Gönder
-            </a>
-          </div>
         </div>
       </div>
     </section>

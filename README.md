@@ -45,17 +45,20 @@ npm run start   # üretim sunucusunu çalıştırır
 
 **Tüm marka ve iletişim bilgileri tek dosyada:** [`lib/constants.ts`](lib/constants.ts)
 
-Aşağıdaki placeholder değerleri kendi bilgilerinizle değiştirin:
+Aşağıdaki sabitleri kendi bilgilerinizle değiştirin:
 
-| Sabit               | Placeholder            | Format / Örnek            |
-| ------------------- | ---------------------- | ------------------------- |
-| `BRAND_NAME`        | `[MARKA_ADI]`          | `Anadolu Şırdan`          |
-| `WHATSAPP_NUMBER`   | `[WHATSAPP_NUMARASI]`  | `905XXXXXXXXX` (90 ile)   |
-| `PHONE_NUMBER`      | `[TELEFON_NUMARASI]`   | `05XXXXXXXXX`             |
-| `EMAIL`             | `[EMAIL]`              | `info@toptansirdanci.com` |
-| `ADDRESS`           | `[ADRES]`              | `İstanbul`                |
-| `WORKING_HOURS`     | `[CALISMA_SAATLERI]`   | `Mo-Sa 08:00-18:00`       |
-| `PRODUCTS[].minOrder` | `[MIN_MIKTAR] kg`    | `20 kg`                   |
+| Sabit                 | Mevcut değer     | Format / Örnek          |
+| --------------------- | ---------------- | ----------------------- |
+| `BRAND_NAME`          | `ŞIRDANCI ADO`   | marka adı               |
+| `WHATSAPP_NUMBER`     | `905464324625`   | `905XXXXXXXXX` (90 ile) |
+| `PHONE_NUMBER`        | `05464324625`    | `05XXXXXXXXX`           |
+| `ADDRESS`             | `[ADRES]`        | `İstanbul` (henüz boş)  |
+| `PRODUCTS[].minOrder` | `20 kg`          | `20 kg`                 |
+
+> **Adres:** `[ADRES]` gibi köşeli parantezli (placeholder) kaldığı sürece
+> footer'da **gösterilmez**; gerçek değeri girince otomatik görünür.
+>
+> **E-posta ve çalışma saati** bu projede kullanılmıyor; siteden kaldırıldı.
 
 > **Not:** Marka adı tüm sitede (`Header`, `Footer`, başlıklar, SEO metadata,
 > JSON-LD) otomatik olarak `BRAND_NAME` sabitinden gelir; tek yerden değişir.

@@ -1,11 +1,5 @@
 import Script from 'next/script'
-import {
-  BRAND_NAME,
-  SITE_URL,
-  PHONE_NUMBER,
-  EMAIL,
-  WORKING_HOURS,
-} from '@/lib/constants'
+import { BRAND_NAME, SITE_URL, PHONE_NUMBER } from '@/lib/constants'
 
 /**
  * JSON-LD yapısal veri (LocalBusiness).
@@ -20,13 +14,11 @@ export default function StructuredData() {
     description: 'Toptan kokoreç ve şırdan tedarikçisi',
     url: SITE_URL,
     telephone: PHONE_NUMBER,
-    email: EMAIL,
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'TR',
     },
     areaServed: 'TR',
-    openingHours: WORKING_HOURS,
   }
 
   return (

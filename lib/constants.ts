@@ -7,13 +7,9 @@
  *  önce aşağıdaki PLACEHOLDER değerleri kendi bilgilerinle değiştir.
  *
  *  Değiştirilecek placeholder'lar:
- *    - BRAND_NAME ............. [MARKA_ADI]
- *    - WHATSAPP_NUMBER ........ [WHATSAPP_NUMARASI]  (905XXXXXXXXX)
- *    - PHONE_NUMBER ........... [TELEFON_NUMARASI]   (05XXXXXXXXX)
- *    - EMAIL .................. [EMAIL]
- *    - ADDRESS ................ [ADRES]
- *    - WORKING_HOURS .......... [CALISMA_SAATLERI]
- *    - PRODUCTS[].minOrder .... [MIN_MIKTAR]
+ *    - WHATSAPP_NUMBER ........ (905XXXXXXXXX)  — şu an ayarlı
+ *    - PHONE_NUMBER ........... (05XXXXXXXXX)   — şu an ayarlı
+ *    - ADDRESS ................ [ADRES]  ← sonra eklenecek
  * ============================================================
  */
 
@@ -25,14 +21,21 @@ export const SITE_URL = `https://${DOMAIN}`
 export const BRAND_NAME = 'ŞIRDANCI ADO'
 
 // ---- İletişim ----
-// WhatsApp numarası uluslararası formatta, başında "90", boşluksuz: 905XXXXXXXXX
-export const WHATSAPP_NUMBER = '[WHATSAPP_NUMARASI]'
-// Telefon numarası yerel format: 05XXXXXXXXX
-export const PHONE_NUMBER = '[TELEFON_NUMARASI]'
-export const EMAIL = '[EMAIL]'
+// WhatsApp ve telefon aynı numara.
+// WhatsApp: uluslararası format, başında "90", boşluksuz (905XXXXXXXXX)
+export const WHATSAPP_NUMBER = '905464324625'
+// Telefon: yerel format (05XXXXXXXXX)
+export const PHONE_NUMBER = '05464324625'
+// Adres sonra eklenecek. Placeholder ([...]) olduğu sürece sitede gösterilmez.
 export const ADDRESS = '[ADRES]'
-// Çalışma saatleri (schema.org openingHours formatı): örn. "Mo-Sa 08:00-18:00"
-export const WORKING_HOURS = '[CALISMA_SAATLERI]'
+
+/**
+ * Bir sabitin hâlâ doldurulmamış placeholder olup olmadığını döndürür
+ * (örn. "[ADRES]"). true ise ilgili bilgi sitede gizlenir.
+ */
+export function isPlaceholder(value: string): boolean {
+  return value.startsWith('[') && value.endsWith(']')
+}
 
 // Teslimat kapsamı
 export const DELIVERY_SCOPE = 'Türkiye geneli (soğuk zincirle kargo)'
@@ -74,7 +77,7 @@ export interface Product {
   id: string
   name: string
   description: string
-  minOrder: string // [MIN_MIKTAR] kg
+  minOrder: string // örn. "20 kg"
   image: string
   imageAlt: string
   waMessage: string
@@ -85,7 +88,7 @@ export const PRODUCTS: Product[] = [
     id: 'kokorec-cig',
     name: 'Kokoreç (Çiğ)',
     description: 'Günlük taze kesim, temizlenmiş, vakumlu paket.',
-    minOrder: '[MIN_MIKTAR] kg', // TODO: minimum sipariş miktarını gir
+    minOrder: '20 kg',
     image: '/media/products/kokorec-cig.webp',
     imageAlt: 'taze-toptan-cig-kokorec',
     waMessage: WA_MESSAGES.kokorecCig,
@@ -94,7 +97,7 @@ export const PRODUCTS: Product[] = [
     id: 'kokorec-pismis',
     name: 'Kokoreç (Pişmiş / Hazır)',
     description: 'Lezzet garantili, servise hazır, soğuk zincir.',
-    minOrder: '[MIN_MIKTAR] kg', // TODO: minimum sipariş miktarını gir
+    minOrder: '20 kg',
     image: '/media/products/kokorec-pismis.webp',
     imageAlt: 'toptan-hazir-pismis-kokorec',
     waMessage: WA_MESSAGES.kokorecPismis,
@@ -103,7 +106,7 @@ export const PRODUCTS: Product[] = [
     id: 'sirdan',
     name: 'Şırdan',
     description: 'Taze, temizlenmiş, doldurulmaya hazır.',
-    minOrder: '[MIN_MIKTAR] kg', // TODO: minimum sipariş miktarını gir
+    minOrder: '20 kg',
     image: '/media/products/sirdan.webp',
     imageAlt: 'taze-toptan-sirdan',
     waMessage: WA_MESSAGES.sirdan,

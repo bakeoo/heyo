@@ -6,12 +6,11 @@ import {
   DOMAIN,
   PHONE_NUMBER,
   WHATSAPP_NUMBER,
-  EMAIL,
   ADDRESS,
-  WORKING_HOURS,
   WA_MESSAGES,
   waLink,
   telLink,
+  isPlaceholder,
 } from '@/lib/constants'
 import { trackContactClick } from '@/lib/analytics'
 
@@ -88,17 +87,8 @@ export default function Footer() {
                   Telefon: <span dir="ltr">{PHONE_NUMBER}</span>
                 </a>
               </li>
-              <li>
-                <a
-                  href={`mailto:${EMAIL}`}
-                  onClick={() => trackContactClick('email', { location: 'footer' })}
-                  className="transition hover:text-white"
-                >
-                  E-posta: {EMAIL}
-                </a>
-              </li>
-              <li>Adres: {ADDRESS}</li>
-              <li>Çalışma: {WORKING_HOURS}</li>
+              {/* Adres ancak gerçek değer girildiğinde gösterilir */}
+              {!isPlaceholder(ADDRESS) && <li>Adres: {ADDRESS}</li>}
             </ul>
           </div>
         </div>
