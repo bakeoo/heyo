@@ -22,7 +22,7 @@ export const DOMAIN = 'toptansirdanci.com'
 export const SITE_URL = `https://${DOMAIN}`
 
 // ---- Marka ----
-export const BRAND_NAME = '[MARKA_ADI]' // TODO: gerçek marka adıyla değiştir
+export const BRAND_NAME = 'ŞIRDANCI ADO'
 
 // ---- İletişim ----
 // WhatsApp numarası uluslararası formatta, başında "90", boşluksuz: 905XXXXXXXXX
