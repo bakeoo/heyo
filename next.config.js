@@ -1,21 +1,25 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Görsel optimizasyonu ayarları
+
+  // ---- Statik export (Cloudflare Pages için) ----
+  // Site tamamen statik olduğundan "next build" doğrudan HTML/CSS/JS üretir
+  // ve "out/" klasörüne export eder. Sunucu gerektirmez.
+  output: 'export',
+
   images: {
-    // WebP ve AVIF formatlarını otomatik üret
-    formats: ['image/avif', 'image/webp'],
-    // Tüm görseller yerel public/ klasöründen geldiği için
-    // uzak domain tanımlamaya gerek yok. Harici bir kaynak eklenirse
-    // aşağıdaki remotePatterns kullanılabilir:
-    remotePatterns: [],
-    // Cihaz genişliklerine göre responsive boyutlar
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    // Statik export'ta Next.js görsel optimize sunucusu çalışmaz;
+    // görseller olduğu gibi servis edilir. Görseller zaten WebP olarak
+    // optimize edildiği için sorun değil (blur placeholder yine çalışır).
+    unoptimized: true,
   },
+
   // Üretimde "Powered by Next.js" başlığını gizle
   poweredByHeader: false,
-  // Sonunda eğik çizgi standardı (SEO tutarlılığı)
-  trailingSlash: false,
+
+  // Her sayfa kendi klasöründe index.html olarak üretilir; statik
+  // barındırmada (Cloudflare Pages) temiz URL yönlendirmesi sağlar.
+  trailingSlash: true,
 }
 
 module.exports = nextConfig
