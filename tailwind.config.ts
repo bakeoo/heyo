@@ -25,10 +25,10 @@ const config: Config = {
       },
       fontFamily: {
         // next/font tarafından sağlanan CSS değişkenleri
+        // Tüm site tek font: Oswald (başlık, gövde, marka yazısı)
         heading: ['var(--font-oswald)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        body: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        // Marka yazısı (logo yanındaki "ŞIRDANCI ADO")
-        brand: ['var(--font-brand)', 'Georgia', 'serif'],
+        body: ['var(--font-oswald)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        brand: ['var(--font-oswald)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         // Type scale (mobil değerler; desktop için sm:/lg: kullanılır)

@@ -1,40 +1,20 @@
 import type { Metadata } from 'next'
-import { Oswald, Inter, Playfair_Display } from 'next/font/google'
+import { Oswald } from 'next/font/google'
 import './globals.css'
 import { buildMetadata, localBusinessJsonLd } from '@/lib/seo'
 import Analytics from '@/components/analytics/Analytics'
 import JsonLd from '@/components/seo/JsonLd'
 
 /**
- * Başlık fontu: Oswald (güçlü, endüstriyel) — 600 ve 700 ağırlıkları.
- * CSS değişkeni olarak tanımlanır, tailwind.config.ts'de kullanılır.
+ * Tek site fontu: Oswald (güçlü, endüstriyel).
+ * Başlık, gövde ve marka yazısı dahil tüm sitede kullanılır.
+ * Türkçe karakterler için latin-ext alt kümesi dahil; gövde metni için
+ * 400/500, başlıklar için 600/700 ağırlıkları yüklenir.
  */
 const oswald = Oswald({
-  subsets: ['latin'],
-  weight: ['600', '700'],
-  variable: '--font-oswald',
-  display: 'swap',
-})
-
-/**
- * Gövde fontu: Inter (okunabilir, modern) — 400 ve 500 ağırlıkları.
- */
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-/**
- * Marka yazısı fontu: Playfair Display (şık, yüksek kontrastlı serif) —
- * amblemin klasik/vintage görünümüyle uyumlu. Türkçe karakterler için
- * latin-ext alt kümesi dahil.
- */
-const playfair = Playfair_Display({
   subsets: ['latin', 'latin-ext'],
-  weight: ['700'],
-  variable: '--font-brand',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-oswald',
   display: 'swap',
 })
 
@@ -57,10 +37,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="tr"
-      className={`${oswald.variable} ${inter.variable} ${playfair.variable}`}
-    >
+    <html lang="tr" className={oswald.variable}>
       <body>
         {/* Google Analytics / Ads (NEXT_PUBLIC_GTAG_ID tanımlıysa yüklenir) */}
         <Analytics />
