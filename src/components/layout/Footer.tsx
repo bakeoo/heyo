@@ -8,6 +8,7 @@ import {
   NAV_LINKS,
   isPlaceholder,
 } from '@/config/site'
+import { LOCATIONS } from '@/content/locations'
 import Container from '@/components/ui/Container'
 import ContactLink from '@/components/ui/ContactLink'
 
@@ -17,7 +18,7 @@ export default function Footer() {
   return (
     <footer className="bg-ink text-white/80">
       <Container className="py-14">
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Marka + açıklama */}
           <div>
             <p className="font-heading text-xl font-bold text-white">
@@ -40,6 +41,25 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link href={link.href} className="transition hover:text-white">
                     {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Hizmet bölgeleri (yerel SEO iç linkleri) */}
+          <nav aria-label="Hizmet bölgeleri">
+            <h3 className="font-heading text-sm font-semibold uppercase tracking-widest text-white">
+              Hizmet Bölgeleri
+            </h3>
+            <ul className="mt-4 space-y-2 text-sm">
+              {LOCATIONS.map((loc) => (
+                <li key={loc.slug}>
+                  <Link
+                    href={`/toptan/${loc.slug}`}
+                    className="transition hover:text-white"
+                  >
+                    {loc.city} Toptan Kokoreç &amp; Şırdan
                   </Link>
                 </li>
               ))}
