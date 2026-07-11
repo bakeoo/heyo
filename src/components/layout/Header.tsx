@@ -2,15 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import {
-  BRAND_NAME,
-  PHONE_NUMBER,
-  WA_MESSAGES,
-  waLink,
-  telLink,
-} from '@/lib/constants'
-import { trackContactClick } from '@/lib/analytics'
-import { WhatsAppIcon, PhoneIcon } from './icons'
+import { BRAND_NAME, PHONE_NUMBER, WA_MESSAGES } from '@/config/site'
+import Container from '@/components/ui/Container'
+import ContactLink from '@/components/ui/ContactLink'
+import { WhatsAppIcon, PhoneIcon } from '@/components/icons'
 
 /**
  * Sticky header.
@@ -18,8 +13,8 @@ import { WhatsAppIcon, PhoneIcon } from './icons'
  * - Sağ: WhatsApp + Telefon butonları (mobilde de iki buton görünür)
  * - Scroll edildiğinde hafif gölge eklenir.
  *
- * @param minimal true verilirse (kampanya sayfası) navigasyon linkleri
- *                ve telefon butonu gizlenir, sadece logo + WhatsApp kalır.
+ * @param minimal true verilirse (kampanya sayfası) telefon butonu gizlenir,
+ *                sadece logo + WhatsApp kalır.
  */
 export default function Header({ minimal = false }: { minimal?: boolean }) {
   const [scrolled, setScrolled] = useState(false)
@@ -37,7 +32,7 @@ export default function Header({ minimal = false }: { minimal?: boolean }) {
         scrolled ? 'shadow-header' : 'shadow-none'
       }`}
     >
-      <div className="container-site flex h-16 items-center justify-between gap-4">
+      <Container className="flex h-16 items-center justify-between gap-4">
         {/* Logo */}
         <Link
           href="/"
@@ -50,28 +45,27 @@ export default function Header({ minimal = false }: { minimal?: boolean }) {
         {/* Sağ taraf butonları */}
         <div className="flex items-center gap-2 sm:gap-3">
           {!minimal && (
-            <a
-              href={telLink()}
-              onClick={() => trackContactClick('phone', { location: 'header' })}
+            <ContactLink
+              channel="phone"
+              location="header"
               className="btn-outline px-4 py-2.5 text-sm sm:text-base"
-              aria-label={`Telefon ile ara: ${PHONE_NUMBER}`}
+              ariaLabel={`Telefon ile ara: ${PHONE_NUMBER}`}
             >
               <PhoneIcon className="h-4 w-4" />
               Ara
-            </a>
+            </ContactLink>
           )}
-          <a
-            href={waLink(WA_MESSAGES.general)}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackContactClick('whatsapp', { location: 'header' })}
+          <ContactLink
+            channel="whatsapp"
+            message={WA_MESSAGES.general}
+            location="header"
             className="btn-whatsapp px-4 py-2.5 text-sm sm:text-base"
           >
             <WhatsAppIcon className="h-4 w-4" />
             WhatsApp
-          </a>
+          </ContactLink>
         </div>
-      </div>
+      </Container>
     </header>
   )
 }

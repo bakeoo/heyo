@@ -1,4 +1,7 @@
-import { STEPS } from '@/lib/constants'
+import { STEPS } from '@/content/home'
+import Section from '@/components/ui/Section'
+import Container from '@/components/ui/Container'
+import SectionHeading from '@/components/ui/SectionHeading'
 
 /**
  * "Sipariş Süreci" section.
@@ -6,16 +9,16 @@ import { STEPS } from '@/lib/constants'
  */
 export default function HowItWorks() {
   return (
-    <section id="nasil-calisir" className="section bg-background">
-      <div className="container-site">
-        <div className="mb-12 text-center">
-          <span className="eyebrow">3 Adımda Sipariş</span>
-          <h2 className="h2-title">Sipariş Süreci</h2>
-        </div>
+    <Section id="nasil-calisir" className="bg-background">
+      <Container>
+        <SectionHeading eyebrow="3 Adımda Sipariş" title="Sipariş Süreci" />
 
         <ol className="grid gap-8 md:grid-cols-3">
           {STEPS.map((step, index) => (
-            <li key={step.no} className="relative flex flex-col items-center text-center">
+            <li
+              key={step.no}
+              className="relative flex flex-col items-center text-center"
+            >
               {/* Adım numarası */}
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand font-heading text-2xl font-bold text-white shadow-soft">
                 {step.no}
@@ -35,7 +38,7 @@ export default function HowItWorks() {
             </li>
           ))}
         </ol>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

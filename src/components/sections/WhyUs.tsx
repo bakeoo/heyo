@@ -1,4 +1,8 @@
-import { FEATURES, BRAND_NAME } from '@/lib/constants'
+import { BRAND_NAME } from '@/config/site'
+import { FEATURES } from '@/content/home'
+import Section from '@/components/ui/Section'
+import Container from '@/components/ui/Container'
+import SectionHeading from '@/components/ui/SectionHeading'
 
 /**
  * "Neden Biz?" section.
@@ -6,12 +10,9 @@ import { FEATURES, BRAND_NAME } from '@/lib/constants'
  */
 export default function WhyUs() {
   return (
-    <section id="neden-biz" className="section bg-surface">
-      <div className="container-site">
-        <div className="mb-12 text-center">
-          <span className="eyebrow">Güvenilir Tedarikçi</span>
-          <h2 className="h2-title">Neden {BRAND_NAME}?</h2>
-        </div>
+    <Section id="neden-biz" className="bg-surface">
+      <Container>
+        <SectionHeading eyebrow="Güvenilir Tedarikçi" title={`Neden ${BRAND_NAME}?`} />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((feature) => (
@@ -35,7 +36,7 @@ export default function WhyUs() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

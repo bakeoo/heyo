@@ -8,9 +8,9 @@ import Script from 'next/script'
  *
  * Kimlik tanımlı DEĞİLSE hiçbir script eklenmez; window.gtag tanımsız kalır
  * ve dönüşüm takibi yardımcıları (lib/analytics.ts) sessizce devre dışı kalır.
- * Böylece geliştirme/önizleme ortamında gereksiz istek yapılmaz.
  *
- * Kullanım: kimliği Vercel proje ayarlarında ortam değişkeni olarak ekleyin.
+ * Not: Statik export'ta bu değer build sırasında gömülür; ortam değişkenini
+ * değiştirince yeniden deploy gerekir.
  */
 export default function Analytics() {
   const gtagId = process.env.NEXT_PUBLIC_GTAG_ID

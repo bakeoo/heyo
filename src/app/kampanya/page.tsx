@@ -1,23 +1,22 @@
 import type { Metadata } from 'next'
-import Header from '@/components/Header'
-import Hero from '@/components/Hero'
-import Products from '@/components/Products'
-import ContactCTA from '@/components/ContactCTA'
-import WhatsAppFloat from '@/components/WhatsAppFloat'
-import { campaignMetadata } from '@/lib/metadata'
-import { BRAND_NAME, DOMAIN } from '@/lib/constants'
+import { BRAND_NAME, DOMAIN } from '@/config/site'
+import { TRUST_POINTS } from '@/content/home'
+import { buildMetadata } from '@/lib/seo'
+import Header from '@/components/layout/Header'
+import WhatsAppFloat from '@/components/layout/WhatsAppFloat'
+import Hero from '@/components/sections/Hero'
+import Products from '@/components/sections/Products'
+import ContactCTA from '@/components/sections/ContactCTA'
+import Container from '@/components/ui/Container'
 
 // Kampanya sayfası metadata (noindex — sadece reklam trafiği)
-export const metadata: Metadata = campaignMetadata
-
-// Güven unsurları (Neden Biz'in kısaltılmış hali)
-const TRUST_POINTS = [
-  '✅ Günlük Taze Kesim',
-  '✅ Soğuk Zincir Teslimat',
-  '✅ Türkiye Geneli Kargo',
-  '✅ Faturalı & Gıda Belgeli',
-  '✅ Toptan Fiyat Garantisi',
-]
+export const metadata: Metadata = buildMetadata({
+  title: `Toptan Kokoreç & Şırdan - Hemen Fiyat Al | ${BRAND_NAME}`,
+  description:
+    'Toptan kokoreç ve şırdan ihtiyacınız için hemen WhatsApp’tan fiyat alın. Günlük taze, soğuk zincir, Türkiye geneli kargo, faturalı teslimat.',
+  path: '/kampanya',
+  noindex: true,
+})
 
 /**
  * Google Ads açılış sayfası (/kampanya).
@@ -41,13 +40,13 @@ export default function KampanyaPage() {
 
         {/* Güven unsurları şeridi */}
         <section className="bg-surface py-6">
-          <div className="container-site">
+          <Container>
             <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center text-sm font-medium text-ink sm:text-base">
               {TRUST_POINTS.map((point) => (
                 <li key={point}>{point}</li>
               ))}
             </ul>
-          </div>
+          </Container>
         </section>
 
         {/* Ürünler */}
@@ -62,7 +61,9 @@ export default function KampanyaPage() {
         <p className="font-heading text-white">
           <span className="text-brand">●</span> {BRAND_NAME}
         </p>
-        <p className="mt-2">© 2026 {BRAND_NAME} · {DOMAIN}</p>
+        <p className="mt-2">
+          © 2026 {BRAND_NAME} · {DOMAIN}
+        </p>
       </footer>
 
       {/* Sabit WhatsApp butonu */}

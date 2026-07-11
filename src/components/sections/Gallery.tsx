@@ -1,5 +1,9 @@
 import Image from 'next/image'
-import { GALLERY, BLUR_DATA_URL } from '@/lib/constants'
+import { BLUR_DATA_URL } from '@/config/site'
+import { GALLERY } from '@/content/home'
+import Section from '@/components/ui/Section'
+import Container from '@/components/ui/Container'
+import SectionHeading from '@/components/ui/SectionHeading'
 
 /**
  * "Üretimimizden" galeri section.
@@ -9,12 +13,9 @@ import { GALLERY, BLUR_DATA_URL } from '@/lib/constants'
  */
 export default function Gallery() {
   return (
-    <section id="galeri" className="section bg-surface">
-      <div className="container-site">
-        <div className="mb-12 text-center">
-          <span className="eyebrow">Mutfaktan Kareler</span>
-          <h2 className="h2-title">Üretimimizden</h2>
-        </div>
+    <Section id="galeri" className="bg-surface">
+      <Container>
+        <SectionHeading eyebrow="Mutfaktan Kareler" title="Üretimimizden" />
 
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {GALLERY.map((img) => (
@@ -35,7 +36,7 @@ export default function Gallery() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

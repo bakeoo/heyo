@@ -6,11 +6,7 @@ import type { Config } from 'tailwindcss'
  * Renkleri değiştirmek istersen sadece buradaki "colors" objesini düzenle.
  */
 const config: Config = {
-  content: [
-    './app/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './lib/**/*.{ts,tsx}',
-  ],
+  content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {

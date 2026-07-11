@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import {
   BRAND_NAME,
@@ -7,28 +5,18 @@ import {
   PHONE_NUMBER,
   WHATSAPP_NUMBER,
   ADDRESS,
-  WA_MESSAGES,
-  waLink,
-  telLink,
+  NAV_LINKS,
   isPlaceholder,
-} from '@/lib/constants'
-import { trackContactClick } from '@/lib/analytics'
-
-// Footer hızlı linkleri (section anchor'ları)
-const QUICK_LINKS = [
-  { href: '#urunler', label: 'Ürünler' },
-  { href: '#neden-biz', label: 'Neden Biz' },
-  { href: '#nasil-calisir', label: 'Sipariş Süreci' },
-  { href: '#galeri', label: 'Üretimimizden' },
-  { href: '#iletisim', label: 'İletişim' },
-]
+} from '@/config/site'
+import Container from '@/components/ui/Container'
+import ContactLink from '@/components/ui/ContactLink'
 
 export default function Footer() {
   const year = 2026 // güncel yıl; gerekirse elle güncellenebilir
 
   return (
     <footer className="bg-ink text-white/80">
-      <div className="container-site py-14">
+      <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-3">
           {/* Marka + açıklama */}
           <div>
@@ -48,12 +36,9 @@ export default function Footer() {
               Hızlı Linkler
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
-              {QUICK_LINKS.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="transition hover:text-white"
-                  >
+                  <Link href={link.href} className="transition hover:text-white">
                     {link.label}
                   </Link>
                 </li>
@@ -68,24 +53,22 @@ export default function Footer() {
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <a
-                  href={waLink(WA_MESSAGES.general)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackContactClick('whatsapp', { location: 'footer' })}
+                <ContactLink
+                  channel="whatsapp"
+                  location="footer"
                   className="transition hover:text-white"
                 >
                   WhatsApp: <span dir="ltr">{WHATSAPP_NUMBER}</span>
-                </a>
+                </ContactLink>
               </li>
               <li>
-                <a
-                  href={telLink()}
-                  onClick={() => trackContactClick('phone', { location: 'footer' })}
+                <ContactLink
+                  channel="phone"
+                  location="footer"
                   className="transition hover:text-white"
                 >
                   Telefon: <span dir="ltr">{PHONE_NUMBER}</span>
-                </a>
+                </ContactLink>
               </li>
               {/* Adres ancak gerçek değer girildiğinde gösterilir */}
               {!isPlaceholder(ADDRESS) && <li>Adres: {ADDRESS}</li>}
@@ -97,7 +80,7 @@ export default function Footer() {
         <div className="mt-10 border-t border-white/10 pt-6 text-center text-sm text-white/60">
           © {year} {BRAND_NAME} — Tüm hakları saklıdır. · {DOMAIN}
         </div>
-      </div>
+      </Container>
     </footer>
   )
 }

@@ -1,14 +1,8 @@
-'use client'
-
-import {
-  WHATSAPP_NUMBER,
-  PHONE_NUMBER,
-  WA_MESSAGES,
-  waLink,
-  telLink,
-} from '@/lib/constants'
-import { trackContactClick } from '@/lib/analytics'
-import { WhatsAppIcon, PhoneIcon } from './icons'
+import { WHATSAPP_NUMBER, PHONE_NUMBER, WA_MESSAGES } from '@/config/site'
+import Section from '@/components/ui/Section'
+import Container from '@/components/ui/Container'
+import ContactLink from '@/components/ui/ContactLink'
+import { WhatsAppIcon, PhoneIcon } from '@/components/icons'
 
 /**
  * İletişim / CTA section.
@@ -16,8 +10,8 @@ import { WhatsAppIcon, PhoneIcon } from './icons'
  */
 export default function ContactCTA() {
   return (
-    <section id="iletisim" className="section bg-brand text-white">
-      <div className="container-site">
+    <Section id="iletisim" className="bg-brand text-white">
+      <Container>
         <div className="mb-12 text-center">
           <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-white/80">
             Bize Ulaşın
@@ -37,15 +31,14 @@ export default function ContactCTA() {
             <p className="mt-1 text-white/90" dir="ltr">
               {WHATSAPP_NUMBER}
             </p>
-            <a
-              href={waLink(WA_MESSAGES.general)}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackContactClick('whatsapp', { location: 'contact' })}
+            <ContactLink
+              channel="whatsapp"
+              message={WA_MESSAGES.general}
+              location="contact"
               className="btn-whatsapp mt-6 w-full"
             >
               Mesaj Gönder
-            </a>
+            </ContactLink>
           </div>
 
           {/* Telefon kartı */}
@@ -55,17 +48,16 @@ export default function ContactCTA() {
             <p className="mt-1 text-white/90" dir="ltr">
               {PHONE_NUMBER}
             </p>
-            <a
-              href={telLink()}
-              onClick={() => trackContactClick('phone', { location: 'contact' })}
+            <ContactLink
+              channel="phone"
+              location="contact"
               className="btn mt-6 w-full bg-white text-brand hover:bg-white/90"
             >
               Hemen Ara
-            </a>
+            </ContactLink>
           </div>
-
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

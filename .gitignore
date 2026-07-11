@@ -30,8 +30,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# next-sitemap çıktıları (build'de otomatik üretilir)
-/public/sitemap.xml
-/public/sitemap-0.xml
-/public/robots.txt

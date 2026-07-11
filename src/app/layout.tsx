@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Oswald, Inter } from 'next/font/google'
 import './globals.css'
-import { siteMetadata } from '@/lib/metadata'
-import StructuredData from '@/components/StructuredData'
-import Analytics from '@/components/Analytics'
+import { buildMetadata, localBusinessJsonLd } from '@/lib/seo'
+import Analytics from '@/components/analytics/Analytics'
+import JsonLd from '@/components/seo/JsonLd'
 
 /**
  * Başlık fontu: Oswald (güçlü, endüstriyel) — 600 ve 700 ağırlıkları.
@@ -26,8 +26,18 @@ const inter = Inter({
   display: 'swap',
 })
 
-// SEO metadata (lib/metadata.ts içinde tanımlı)
-export const metadata: Metadata = siteMetadata
+/**
+ * Site geneli / ana sayfa metadata'sı. Alt sayfalar kendi `metadata`'sını
+ * export ederek bunu geçersiz kılar.
+ */
+export const metadata: Metadata = buildMetadata({
+  title: 'Toptan Kokoreç ve Şırdan | ŞIRDANCI ADO | Türkiye Geneli',
+  description:
+    'Türkiye geneli toptan kokoreç ve şırdan tedarikçisi. Günlük taze kesim, soğuk zincir kargo, fatura kesilir. WhatsApp ile hemen fiyat alın.',
+  path: '/',
+  keywords:
+    'toptan kokoreç, şırdan toptan, kokoreç tedarikçi, toptan sakatat, kokoreçci malzeme, toptan şırdan fiyatı',
+})
 
 export default function RootLayout({
   children,
@@ -40,7 +50,7 @@ export default function RootLayout({
         {/* Google Analytics / Ads (NEXT_PUBLIC_GTAG_ID tanımlıysa yüklenir) */}
         <Analytics />
         {/* JSON-LD yapısal veri (LocalBusiness) */}
-        <StructuredData />
+        <JsonLd id="ld-localbusiness" data={localBusinessJsonLd()} />
         {children}
       </body>
     </html>

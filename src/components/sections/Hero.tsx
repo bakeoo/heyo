@@ -2,15 +2,10 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import {
-  WA_MESSAGES,
-  HERO_MEDIA,
-  BLUR_DATA_URL,
-  waLink,
-  telLink,
-} from '@/lib/constants'
-import { trackContactClick } from '@/lib/analytics'
-import { WhatsAppIcon, PhoneIcon } from './icons'
+import { WA_MESSAGES, HERO_MEDIA, BLUR_DATA_URL } from '@/config/site'
+import Container from '@/components/ui/Container'
+import ContactLink from '@/components/ui/ContactLink'
+import { WhatsAppIcon, PhoneIcon } from '@/components/icons'
 
 /**
  * Hero section.
@@ -70,7 +65,7 @@ export default function Hero({
       />
 
       {/* İçerik */}
-      <div className="container-site relative z-10 py-20 text-white">
+      <Container className="relative z-10 py-20 text-white">
         <h1 className="max-w-4xl text-h1-m font-bold leading-tight sm:text-h1-d">
           {title}
         </h1>
@@ -79,26 +74,25 @@ export default function Hero({
         </p>
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-          <a
-            href={waLink(WA_MESSAGES.general)}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackContactClick('whatsapp', { location: 'hero' })}
+          <ContactLink
+            channel="whatsapp"
+            message={WA_MESSAGES.general}
+            location="hero"
             className="btn-whatsapp text-lg"
           >
             <WhatsAppIcon className="h-6 w-6" />
             WhatsApp&apos;tan Fiyat Al
-          </a>
-          <a
-            href={telLink()}
-            onClick={() => trackContactClick('phone', { location: 'hero' })}
+          </ContactLink>
+          <ContactLink
+            channel="phone"
+            location="hero"
             className="btn-outline-white text-lg"
           >
             <PhoneIcon className="h-6 w-6" />
             Hemen Ara
-          </a>
+          </ContactLink>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

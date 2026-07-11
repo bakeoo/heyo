@@ -1,9 +1,11 @@
-'use client'
-
 import Image from 'next/image'
-import { PRODUCTS, BLUR_DATA_URL, waLink } from '@/lib/constants'
-import { trackContactClick } from '@/lib/analytics'
-import { WhatsAppIcon } from './icons'
+import { BLUR_DATA_URL } from '@/config/site'
+import { PRODUCTS } from '@/content/products'
+import Section from '@/components/ui/Section'
+import Container from '@/components/ui/Container'
+import SectionHeading from '@/components/ui/SectionHeading'
+import ContactLink from '@/components/ui/ContactLink'
+import { WhatsAppIcon } from '@/components/icons'
 
 /**
  * Ürünler section.
@@ -12,12 +14,9 @@ import { WhatsAppIcon } from './icons'
  */
 export default function Products() {
   return (
-    <section id="urunler" className="section bg-background">
-      <div className="container-site">
-        <div className="mb-12 text-center">
-          <span className="eyebrow">Toptan Tedarik</span>
-          <h2 className="h2-title">Ürünlerimiz</h2>
-        </div>
+    <Section id="urunler" className="bg-background">
+      <Container>
+        <SectionHeading eyebrow="Toptan Tedarik" title="Ürünlerimiz" />
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {PRODUCTS.map((product) => (
@@ -50,26 +49,21 @@ export default function Products() {
                   <span className="text-brand">{product.minOrder}</span>
                 </p>
 
-                <a
-                  href={waLink(product.waMessage)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() =>
-                    trackContactClick('whatsapp', {
-                      location: 'products',
-                      product: product.id,
-                    })
-                  }
+                <ContactLink
+                  channel="whatsapp"
+                  message={product.waMessage}
+                  location="products"
+                  extra={{ product: product.id }}
                   className="btn-whatsapp mt-6 w-full"
                 >
                   <WhatsAppIcon className="h-5 w-5" />
                   Fiyat Al
-                </a>
+                </ContactLink>
               </div>
             </article>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }
