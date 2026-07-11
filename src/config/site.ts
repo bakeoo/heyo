@@ -50,10 +50,10 @@ export interface NavLink {
 }
 
 export const NAV_LINKS: NavLink[] = [
-  { href: '/#urunler', label: 'Ürünler' },
+  { href: '/toptan-sirdan', label: 'Toptan Şırdan' },
+  { href: '/toptan-kokorec', label: 'Toptan Kokoreç' },
   { href: '/#neden-biz', label: 'Neden Biz' },
-  { href: '/#nasil-calisir', label: 'Sipariş Süreci' },
-  { href: '/#galeri', label: 'Üretimimizden' },
+  { href: '/sss', label: 'SSS' },
   { href: '/#iletisim', label: 'İletişim' },
 ]
 

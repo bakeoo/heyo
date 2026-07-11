@@ -9,17 +9,31 @@ import { WhatsAppIcon } from '@/components/icons'
 
 /**
  * Ürünler section.
- * 3 ürün kartı (mobilde alt alta). Her kartta fotoğraf (4/3),
- * ad, açıklama, min. sipariş ve ürüne özel WhatsApp "Fiyat Al" butonu.
+ * Varsayılan: tüm ürünler. `ids` verilirse yalnızca o ürünler gösterilir
+ * (kategori sayfalarında ilgili ürünleri öne çıkarmak için).
+ *
+ * @param ids     Gösterilecek ürün id'leri (verilmezse hepsi)
+ * @param eyebrow Başlık üstü küçük etiket
+ * @param title   Section başlığı
  */
-export default function Products() {
+export default function Products({
+  ids,
+  eyebrow = 'Toptan Tedarik',
+  title = 'Ürünlerimiz',
+}: {
+  ids?: string[]
+  eyebrow?: string
+  title?: string
+} = {}) {
+  const items = ids ? PRODUCTS.filter((p) => ids.includes(p.id)) : PRODUCTS
+
   return (
     <Section id="urunler" className="bg-background">
       <Container>
-        <SectionHeading eyebrow="Toptan Tedarik" title="Ürünlerimiz" />
+        <SectionHeading eyebrow={eyebrow} title={title} />
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {PRODUCTS.map((product) => (
+          {items.map((product) => (
             <article
               key={product.id}
               className="group flex flex-col overflow-hidden rounded-card border border-line bg-surface shadow-soft transition hover:shadow-lg"

@@ -18,9 +18,18 @@ import {
 } from '@/config/site'
 import type { Product } from '@/content/products'
 
-/** Kanonik yolu tam URL'ye çevirir ('/' → site kökü). */
+/**
+ * Yolu sonunda eğik çizgiyle normalize eder (next.config trailingSlash: true
+ * ile uyumlu). '/' → '/', '/x' → '/x/'. Kanonik URL tutarlılığı için.
+ */
+function withTrailingSlash(path = '/'): string {
+  if (path === '/') return '/'
+  return path.endsWith('/') ? path : `${path}/`
+}
+
+/** Kanonik yolu tam URL'ye çevirir (sonda eğik çizgi dahil). */
 function absoluteUrl(path = '/'): string {
-  return path === '/' ? SITE_URL : `${SITE_URL}${path}`
+  return `${SITE_URL}${withTrailingSlash(path)}`
 }
 
 export interface PageSeo {
@@ -55,7 +64,7 @@ export function buildMetadata({
     title,
     description,
     keywords,
-    alternates: { canonical: path },
+    alternates: { canonical: withTrailingSlash(path) },
     openGraph: {
       title,
       description,
