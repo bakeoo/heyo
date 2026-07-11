@@ -27,6 +27,8 @@ const config: Config = {
         // next/font tarafından sağlanan CSS değişkenleri
         heading: ['var(--font-oswald)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         body: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Marka yazısı (logo yanındaki "ŞIRDANCI ADO")
+        brand: ['var(--font-brand)', 'Georgia', 'serif'],
       },
       fontSize: {
         // Type scale (mobil değerler; desktop için sm:/lg: kullanılır)

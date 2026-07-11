@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Oswald, Inter } from 'next/font/google'
+import { Oswald, Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import { buildMetadata, localBusinessJsonLd } from '@/lib/seo'
 import Analytics from '@/components/analytics/Analytics'
@@ -27,6 +27,18 @@ const inter = Inter({
 })
 
 /**
+ * Marka yazısı fontu: Playfair Display (şık, yüksek kontrastlı serif) —
+ * amblemin klasik/vintage görünümüyle uyumlu. Türkçe karakterler için
+ * latin-ext alt kümesi dahil.
+ */
+const playfair = Playfair_Display({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['700'],
+  variable: '--font-brand',
+  display: 'swap',
+})
+
+/**
  * Site geneli / ana sayfa metadata'sı. Alt sayfalar kendi `metadata`'sını
  * export ederek bunu geçersiz kılar.
  */
@@ -45,7 +57,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="tr" className={`${oswald.variable} ${inter.variable}`}>
+    <html
+      lang="tr"
+      className={`${oswald.variable} ${inter.variable} ${playfair.variable}`}
+    >
       <body>
         {/* Google Analytics / Ads (NEXT_PUBLIC_GTAG_ID tanımlıysa yüklenir) */}
         <Analytics />
