@@ -77,16 +77,29 @@ export default function Header({ minimal = false }: { minimal?: boolean }) {
         {!minimal && (
           <nav
             aria-label="Ana menü"
-            className="hidden flex-1 items-center justify-center gap-7 lg:gap-8 md:flex"
+            className="hidden flex-1 items-center justify-center md:flex"
           >
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-ink transition hover:text-brand"
-              >
-                {link.label}
-              </Link>
+            {NAV_LINKS.map((link, i) => (
+              <div key={link.href} className="flex items-center">
+                {/* Mini dikey ayraç (ilk linkten önce yok) */}
+                {i > 0 && (
+                  <span
+                    aria-hidden="true"
+                    className="mx-4 h-3.5 w-px bg-line lg:mx-5"
+                  />
+                )}
+                <Link
+                  href={link.href}
+                  className="group relative py-1.5 text-sm font-medium tracking-wide text-ink transition-colors duration-200 hover:text-brand"
+                >
+                  {link.label}
+                  {/* Ortadan açılan kırmızı alt çizgi */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -bottom-0.5 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-brand transition-all duration-300 ease-out group-hover:w-full"
+                  />
+                </Link>
+              </div>
             ))}
           </nav>
         )}
