@@ -58,9 +58,12 @@ export const NAV_LINKS: NavLink[] = [
 ]
 
 // ---- Medya yolları ----
+// Not: Video/poster değiştirdiğinde ?v sürüm numarasını artır.
+// Aynı dosya adıyla yeni içerik yüklenince tarayıcı/CDN eski dosyayı
+// önbellekten servis eder; sürüm etiketi (query) önbelleği atlatır.
 export const HERO_MEDIA = {
   poster: '/media/hero/hero-bg.webp',
-  video: '/media/hero/hero-video.mp4',
+  video: '/media/hero/hero-video.mp4?v=2',
 }
 
 // Açık gri, çok küçük blur veri-URI'si (next/image placeholder="blur").
