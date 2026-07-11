@@ -2,7 +2,14 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { BRAND_NAME, PHONE_NUMBER, WA_MESSAGES, NAV_LINKS } from '@/config/site'
+import Image from 'next/image'
+import {
+  BRAND_NAME,
+  BRAND_LOGO,
+  PHONE_NUMBER,
+  WA_MESSAGES,
+  NAV_LINKS,
+} from '@/config/site'
 import Container from '@/components/ui/Container'
 import ContactLink from '@/components/ui/ContactLink'
 import { WhatsAppIcon, PhoneIcon } from '@/components/icons'
@@ -49,10 +56,17 @@ export default function Header({ minimal = false }: { minimal?: boolean }) {
         <Link
           href="/"
           onClick={closeMenu}
-          className="shrink-0 font-heading text-xl font-bold tracking-tight text-ink sm:text-2xl"
+          className="shrink-0"
           aria-label={`${BRAND_NAME} ana sayfa`}
         >
-          <span className="text-brand">●</span> {BRAND_NAME}
+          <Image
+            src={BRAND_LOGO}
+            alt={BRAND_NAME}
+            width={256}
+            height={256}
+            priority
+            className="h-12 w-12"
+          />
         </Link>
 
         {/* Masaüstü navigasyon */}

@@ -19,6 +19,8 @@ export const SITE_URL = `https://${DOMAIN}`
 export const BRAND_NAME = 'ŞIRDANCI ADO'
 export const BRAND_DESCRIPTION =
   'Türkiye geneli toptan kokoreç ve şırdan tedarikçisi'
+// Logo (256px optimize WebP). Kaynak: public/media/brand/logo_ado.png
+export const BRAND_LOGO = '/media/brand/logo.webp'
 
 // ---- İletişim (WhatsApp ve telefon aynı numara) ----
 // WhatsApp: uluslararası format, başında "90", boşluksuz (905XXXXXXXXX)
