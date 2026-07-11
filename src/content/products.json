@@ -1,0 +1,29 @@
+[
+  {
+    "id": "kokorec-cig",
+    "name": "Kokoreç (Çiğ)",
+    "description": "Günlük taze kesim, temizlenmiş, vakumlu paket.",
+    "minOrder": "20 kg",
+    "image": "/media/products/kokorec-cig.webp",
+    "imageAlt": "taze-toptan-cig-kokorec",
+    "waMessage": "Merhaba, toptan çiğ kokoreç fiyatı almak istiyorum."
+  },
+  {
+    "id": "kokorec-pismis",
+    "name": "Kokoreç (Pişmiş / Hazır)",
+    "description": "Lezzet garantili, servise hazır, soğuk zincir.",
+    "minOrder": "20 kg",
+    "image": "/media/products/kokorec-pismis.webp",
+    "imageAlt": "toptan-hazir-pismis-kokorec",
+    "waMessage": "Merhaba, toptan hazır kokoreç fiyatı almak istiyorum."
+  },
+  {
+    "id": "sirdan",
+    "name": "Şırdan",
+    "description": "Taze, temizlenmiş, doldurulmaya hazır.",
+    "minOrder": "20 kg",
+    "image": "/media/products/sirdan.webp",
+    "imageAlt": "taze-toptan-sirdan",
+    "waMessage": "Merhaba, toptan şırdan fiyatı almak istiyorum."
+  }
+]
