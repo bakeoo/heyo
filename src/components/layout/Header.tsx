@@ -6,7 +6,7 @@ import Image from 'next/image'
 import {
   BRAND_NAME,
   BRAND_LOGO,
-  PHONE_NUMBER,
+  PHONE_DISPLAY,
   WA_MESSAGES,
   NAV_LINKS,
 } from '@/config/site'
@@ -112,7 +112,7 @@ export default function Header({ minimal = false }: { minimal?: boolean }) {
               channel="phone"
               location="header"
               className="btn-outline hidden px-4 py-2.5 text-sm sm:text-base md:inline-flex"
-              ariaLabel={`Telefon ile ara: ${PHONE_NUMBER}`}
+              ariaLabel={`Telefon ile ara: ${PHONE_DISPLAY}`}
             >
               <PhoneIcon className="h-4 w-4" />
               Ara
@@ -169,7 +169,7 @@ export default function Header({ minimal = false }: { minimal?: boolean }) {
               channel="phone"
               location="header-mobile"
               className="btn-outline mt-2 w-full"
-              ariaLabel={`Telefon ile ara: ${PHONE_NUMBER}`}
+              ariaLabel={`Telefon ile ara: ${PHONE_DISPLAY}`}
             >
               <PhoneIcon className="h-5 w-5" />
               Hemen Ara

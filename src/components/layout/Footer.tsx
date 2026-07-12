@@ -2,8 +2,7 @@ import Link from 'next/link'
 import {
   BRAND_NAME,
   DOMAIN,
-  PHONE_NUMBER,
-  WHATSAPP_NUMBER,
+  PHONE_DISPLAY,
   ADDRESS,
   NAV_LINKS,
   isPlaceholder,
@@ -78,7 +77,7 @@ export default function Footer() {
                   location="footer"
                   className="transition hover:text-white"
                 >
-                  WhatsApp: <span dir="ltr">{WHATSAPP_NUMBER}</span>
+                  WhatsApp: <span dir="ltr">{PHONE_DISPLAY}</span>
                 </ContactLink>
               </li>
               <li>
@@ -87,7 +86,7 @@ export default function Footer() {
                   location="footer"
                   className="transition hover:text-white"
                 >
-                  Telefon: <span dir="ltr">{PHONE_NUMBER}</span>
+                  Telefon: <span dir="ltr">{PHONE_DISPLAY}</span>
                 </ContactLink>
               </li>
               {/* Adres ancak gerçek değer girildiğinde gösterilir */}

@@ -1,4 +1,4 @@
-import { WHATSAPP_NUMBER, PHONE_NUMBER, WA_MESSAGES } from '@/config/site'
+import { PHONE_DISPLAY, WA_MESSAGES } from '@/config/site'
 import Section from '@/components/ui/Section'
 import Container from '@/components/ui/Container'
 import ContactLink from '@/components/ui/ContactLink'
@@ -29,7 +29,7 @@ export default function ContactCTA() {
             <WhatsAppIcon className="h-10 w-10 text-white" />
             <h3 className="mt-4 font-heading text-lg font-semibold">WhatsApp</h3>
             <p className="mt-1 text-white/90" dir="ltr">
-              {WHATSAPP_NUMBER}
+              {PHONE_DISPLAY}
             </p>
             <ContactLink
               channel="whatsapp"
@@ -46,7 +46,7 @@ export default function ContactCTA() {
             <PhoneIcon className="h-10 w-10 text-white" />
             <h3 className="mt-4 font-heading text-lg font-semibold">Telefon</h3>
             <p className="mt-1 text-white/90" dir="ltr">
-              {PHONE_NUMBER}
+              {PHONE_DISPLAY}
             </p>
             <ContactLink
               channel="phone"

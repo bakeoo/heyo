@@ -22,11 +22,13 @@ export const BRAND_DESCRIPTION =
 // Logo (256px optimize WebP). Kaynak: public/media/brand/logo_ado.png
 export const BRAND_LOGO = '/media/brand/logo.webp'
 
-// ---- İletişim (WhatsApp ve telefon aynı numara) ----
-// WhatsApp: uluslararası format, başında "90", boşluksuz (905XXXXXXXXX)
+// ---- İletişim (WhatsApp ve telefon AYNI numara: +90 546 432 4625) ----
+// WhatsApp: uluslararası, boşluksuz (wa.me linki için)
 export const WHATSAPP_NUMBER = '905464324625'
-// Telefon: yerel format (05XXXXXXXXX)
-export const PHONE_NUMBER = '05464324625'
+// Telefon: uluslararası format (tel: linki ve schema için)
+export const PHONE_NUMBER = '+905464324625'
+// Ekranda gösterilen okunur biçim (tüm görünür numaralar bunu kullanır)
+export const PHONE_DISPLAY = '+90 546 432 4625'
 // Adres sonra eklenecek. Placeholder ([...]) olduğu sürece sitede gösterilmez.
 export const ADDRESS = '[ADRES]'
 
