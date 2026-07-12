@@ -38,18 +38,24 @@ export default function Products({
               key={product.id}
               className="group flex flex-col overflow-hidden rounded-card border border-line bg-surface shadow-soft transition hover:shadow-lg"
             >
-              {/* Ürün fotoğrafı 4/3 oran */}
+              {/* Ürün fotoğrafı 4/3 oran (görsel yoksa placeholder) */}
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-line">
-                <Image
-                  src={product.image}
-                  alt={product.imageAlt}
-                  fill
-                  loading="lazy"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  placeholder="blur"
-                  blurDataURL={BLUR_DATA_URL}
-                  className="object-cover transition duration-300 group-hover:scale-[1.03]"
-                />
+                {product.image?.trim() ? (
+                  <Image
+                    src={product.image}
+                    alt={product.imageAlt}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    placeholder="blur"
+                    blurDataURL={BLUR_DATA_URL}
+                    className="object-cover transition duration-300 group-hover:scale-[1.03]"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-surface text-sm font-medium text-muted">
+                    Görsel yakında
+                  </div>
+                )}
               </div>
 
               {/* İçerik */}
