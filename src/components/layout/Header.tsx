@@ -51,7 +51,7 @@ export default function Header({ minimal = false }: { minimal?: boolean }) {
         scrolled ? 'shadow-header' : 'shadow-none'
       }`}
     >
-      <Container className="flex h-16 items-center justify-between gap-4">
+      <Container className="flex h-16 items-center justify-between gap-4 sm:h-20">
         {/* Logo + marka yazısı (mobilde de görünür) */}
         <Link
           href="/"
@@ -65,7 +65,7 @@ export default function Header({ minimal = false }: { minimal?: boolean }) {
             width={256}
             height={256}
             priority
-            className="h-10 w-10 shrink-0 sm:h-12 sm:w-12"
+            className="h-12 w-12 shrink-0 sm:h-16 sm:w-16"
           />
           <span className="min-w-0 truncate font-brand text-base font-bold tracking-wide text-ink sm:text-2xl">
             {BRAND_NAME}
