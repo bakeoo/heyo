@@ -22,8 +22,17 @@
     "name": "Şırdan",
     "description": "Taze, temizlenmiş, doldurulmaya hazır.",
     "minOrder": "20 kg",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn7hhTNKQWD_KnmwBxOckXF3wkBManLbgXU01ksGQywTV8OUBCIDx3jftM&s=10",
+    "image": "/media/products/sirdan.webp",
     "imageAlt": "taze-toptan-sirdan",
     "waMessage": "Merhaba, toptan şırdan fiyatı almak istiyorum."
+  },
+  {
+    "id": "toptan-midye",
+    "name": "Toptan Midye",
+    "description": "toptan midye",
+    "minOrder": "5kg",
+    "image": "https://www.jidlonacestach.cz/wp-content/uploads/2022/09/IMG_20220911_085946-scaled.jpg",
+    "imageAlt": "asf",
+    "waMessage": "Merhaba, toptan midye fiyatı almak istiyorum."
   }
 ]
