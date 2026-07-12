@@ -22,7 +22,7 @@
     "name": "Şırdan",
     "description": "Taze, temizlenmiş, doldurulmaya hazır.",
     "minOrder": "20 kg",
-    "image": "/media/products/sirdan.webp",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn7hhTNKQWD_KnmwBxOckXF3wkBManLbgXU01ksGQywTV8OUBCIDx3jftM&s=10",
     "imageAlt": "taze-toptan-sirdan",
     "waMessage": "Merhaba, toptan şırdan fiyatı almak istiyorum."
   }
