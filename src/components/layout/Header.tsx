@@ -52,11 +52,11 @@ export default function Header({ minimal = false }: { minimal?: boolean }) {
       }`}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
-        {/* Logo + marka yazısı */}
+        {/* Logo + marka yazısı (mobilde de görünür) */}
         <Link
           href="/"
           onClick={closeMenu}
-          className="flex shrink-0 items-center gap-2.5"
+          className="flex min-w-0 items-center gap-2"
           aria-label={`${BRAND_NAME} ana sayfa`}
         >
           <Image
@@ -65,10 +65,9 @@ export default function Header({ minimal = false }: { minimal?: boolean }) {
             width={256}
             height={256}
             priority
-            className="h-12 w-12"
+            className="h-10 w-10 shrink-0 sm:h-12 sm:w-12"
           />
-          {/* Amblem zaten markayı içerir; dar ekranda yazıyı gizle */}
-          <span className="hidden font-brand text-xl font-bold tracking-wide text-ink sm:inline-block sm:text-2xl">
+          <span className="min-w-0 truncate font-brand text-base font-bold tracking-wide text-ink sm:text-2xl">
             {BRAND_NAME}
           </span>
         </Link>
