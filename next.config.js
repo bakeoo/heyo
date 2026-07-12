@@ -12,6 +12,10 @@ const nextConfig = {
     // görseller olduğu gibi servis edilir. Görseller zaten WebP olarak
     // optimize edildiği için sorun değil (blur placeholder yine çalışır).
     unoptimized: true,
+    // "Görsel Yolu" alanına yerel yol (/media/...) yerine tam bir https
+    // URL de girilebilsin. Optimize kapalı olduğu için görsel doğrudan
+    // <img> olarak gösterilir; proxy/güvenlik riski yoktur.
+    remotePatterns: [{ protocol: 'https', hostname: '**' }],
   },
 
   // Üretimde "Powered by Next.js" başlığını gizle
