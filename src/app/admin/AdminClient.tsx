@@ -1,131 +1,48 @@
 'use client'
 
 import { useState } from 'react'
-import initialProducts from '@/content/products.json'
-import type { Product } from '@/content/products'
+import ProductManager from './ProductManager'
+import CostManager from './CostManager'
 
-// Yeni ürün şablonu
-const EMPTY: Product = {
-  id: '',
-  name: '',
-  description: '',
-  minOrder: '20 kg',
-  image: '/media/products/',
-  imageAlt: '',
-  waMessage: 'Merhaba, toptan ürün fiyatı almak istiyorum.',
-}
+type TabId = 'products' | 'costs'
 
-// Türkçe uyumlu basit slug üretici (id için)
-function slugify(s: string): string {
-  return (s || '')
-    .toLowerCase()
-    .replace(/ç/g, 'c')
-    .replace(/ğ/g, 'g')
-    .replace(/ı/g, 'i')
-    .replace(/ö/g, 'o')
-    .replace(/ş/g, 's')
-    .replace(/ü/g, 'u')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-}
-
-const FIELDS: { key: keyof Product; label: string; textarea?: boolean; hint?: string }[] = [
-  { key: 'name', label: 'Ürün Adı' },
-  { key: 'description', label: 'Açıklama', textarea: true },
-  { key: 'minOrder', label: 'Min. Sipariş', hint: 'örn. 20 kg' },
-  { key: 'image', label: 'Görsel Yolu', hint: 'örn. /media/products/urun.webp — dosyayı GitHub’a ayrıca yükle' },
-  { key: 'imageAlt', label: 'Görsel Alt Metni (SEO)', hint: 'örn. taze-toptan-sirdan' },
-  { key: 'waMessage', label: 'WhatsApp Mesajı', textarea: true },
+const TABS: { id: TabId; label: string; icon: React.ReactNode }[] = [
+  { id: 'products', label: 'Ürün Yönetimi', icon: <BoxIcon /> },
+  { id: 'costs', label: 'Maliyet Yönetimi', icon: <WalletIcon /> },
 ]
 
 export default function AdminClient() {
   const [password, setPassword] = useState('')
   const [authed, setAuthed] = useState(false)
   const [busy, setBusy] = useState(false)
-  const [status, setStatus] = useState<{ type: 'ok' | 'err' | 'info'; text: string } | null>(null)
-  const [products, setProducts] = useState<Product[]>(initialProducts as Product[])
+  const [err, setErr] = useState('')
+  const [tab, setTab] = useState<TabId>('products')
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
     setBusy(true)
-    setStatus(null)
+    setErr('')
     try {
       const res = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
       })
-      if (res.ok) {
-        setAuthed(true)
-      } else {
+      if (res.ok) setAuthed(true)
+      else {
         const d = await res.json().catch(() => ({}))
-        setStatus({ type: 'err', text: d.error || 'Şifre hatalı.' })
+        setErr(d.error || 'Şifre hatalı.')
       }
     } catch {
-      setStatus({ type: 'err', text: 'Bağlantı hatası. (Panel yalnızca canlı sitede çalışır.)' })
+      setErr('Bağlantı hatası. (Panel yalnızca canlı sitede çalışır.)')
     } finally {
       setBusy(false)
     }
   }
 
-  function setField(i: number, key: keyof Product, value: string) {
-    setProducts((ps) => ps.map((p, idx) => (idx === i ? { ...p, [key]: value } : p)))
-  }
-  function addProduct() {
-    setProducts((ps) => [...ps, { ...EMPTY }])
-  }
-  function removeProduct(i: number) {
-    setProducts((ps) => ps.filter((_, idx) => idx !== i))
-  }
-  function move(i: number, dir: -1 | 1) {
-    setProducts((ps) => {
-      const j = i + dir
-      if (j < 0 || j >= ps.length) return ps
-      const next = [...ps]
-      ;[next[i], next[j]] = [next[j], next[i]]
-      return next
-    })
-  }
-
-  async function handleSave() {
-    setBusy(true)
-    setStatus(null)
-    // id boşsa ada göre üret; benzersizleştir
-    const seen = new Set<string>()
-    const cleaned = products.map((p, i) => {
-      let id = (p.id || '').trim() || slugify(p.name) || `urun-${i + 1}`
-      while (seen.has(id)) id = `${id}-${i + 1}`
-      seen.add(id)
-      return { ...p, id }
-    })
-
-    if (cleaned.some((p) => !p.name.trim())) {
-      setStatus({ type: 'err', text: 'Her ürünün adı dolu olmalı.' })
-      setBusy(false)
-      return
-    }
-
-    try {
-      const res = await fetch('/api/admin/save', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password, products: cleaned }),
-      })
-      const d = await res.json().catch(() => ({}))
-      if (res.ok) {
-        setProducts(cleaned)
-        setStatus({
-          type: 'ok',
-          text: '✓ Kaydedildi! Site ~1-2 dakika içinde otomatik güncellenecek. (Sonra sayfayı Ctrl+F5 ile yenile.)',
-        })
-      } else {
-        setStatus({ type: 'err', text: d.error || `Kaydedilemedi (${res.status}).` })
-      }
-    } catch {
-      setStatus({ type: 'err', text: 'Bağlantı hatası.' })
-    } finally {
-      setBusy(false)
-    }
+  function logout() {
+    setAuthed(false)
+    setPassword('')
   }
 
   // ---- Giriş ekranı ----
@@ -151,9 +68,9 @@ export default function AdminClient() {
           <button type="submit" disabled={busy} className="btn-brand mt-4 w-full">
             {busy ? 'Kontrol ediliyor…' : 'Giriş Yap'}
           </button>
-          {status && (
+          {err && (
             <p className="mt-3 text-sm text-brand" role="alert">
-              {status.text}
+              {err}
             </p>
           )}
         </form>
@@ -161,118 +78,83 @@ export default function AdminClient() {
     )
   }
 
-  // ---- Ürün yönetimi ----
+  // ---- Dashboard (sidebar + içerik) ----
   return (
-    <main className="min-h-screen bg-surface pb-24">
-      <header className="sticky top-0 z-10 border-b border-line bg-background/95 backdrop-blur">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
-          <h1 className="font-heading text-xl font-bold text-ink">
-            <span className="text-brand">●</span> Ürün Yönetimi
-          </h1>
-          <div className="flex items-center gap-2">
-            <button onClick={addProduct} className="btn-outline px-4 py-2 text-sm">
-              + Ürün Ekle
-            </button>
-            <button onClick={handleSave} disabled={busy} className="btn-brand px-4 py-2 text-sm">
-              {busy ? 'Kaydediliyor…' : 'Kaydet'}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <div className="mx-auto max-w-4xl px-4">
-        {status && (
-          <p
-            role="alert"
-            className={`mt-4 rounded-lg border px-4 py-3 text-sm ${
-              status.type === 'ok'
-                ? 'border-whatsapp bg-whatsapp/10 text-ink'
-                : status.type === 'err'
-                  ? 'border-brand bg-brand/10 text-brand'
-                  : 'border-line bg-background text-muted'
-            }`}
-          >
-            {status.text}
+    <div className="flex min-h-screen bg-surface">
+      {/* Masaüstü sidebar */}
+      <aside className="hidden w-60 shrink-0 flex-col border-r border-line bg-background md:flex">
+        <div className="border-b border-line px-5 py-4">
+          <p className="font-heading text-lg font-bold text-ink">
+            <span className="text-brand">●</span> Yönetim
           </p>
-        )}
-
-        <p className="mt-4 text-sm text-muted">
-          {products.length} ürün. Değişikliklerin canlıya yansıması için{' '}
-          <strong>Kaydet</strong>’e bas.
-        </p>
-
-        <div className="mt-4 space-y-5">
-          {products.map((p, i) => (
-            <div
-              key={i}
-              className="rounded-card border border-line bg-background p-5 shadow-soft"
+          <p className="text-xs text-muted">ŞIRDANCI ADO</p>
+        </div>
+        <nav className="flex-1 space-y-1 p-3">
+          {TABS.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setTab(t.id)}
+              className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+                tab === t.id ? 'bg-brand text-white' : 'text-ink hover:bg-surface'
+              }`}
             >
-              <div className="mb-3 flex items-center justify-between">
-                <span className="font-heading text-sm font-semibold text-muted">
-                  Ürün #{i + 1}
-                </span>
-                <div className="flex items-center gap-1">
-                  <button
-                    onClick={() => move(i, -1)}
-                    disabled={i === 0}
-                    aria-label="Yukarı taşı"
-                    className="rounded px-2 py-1 text-muted hover:bg-surface disabled:opacity-30"
-                  >
-                    ↑
-                  </button>
-                  <button
-                    onClick={() => move(i, 1)}
-                    disabled={i === products.length - 1}
-                    aria-label="Aşağı taşı"
-                    className="rounded px-2 py-1 text-muted hover:bg-surface disabled:opacity-30"
-                  >
-                    ↓
-                  </button>
-                  <button
-                    onClick={() => removeProduct(i)}
-                    className="rounded px-2 py-1 text-sm text-brand hover:bg-brand/10"
-                  >
-                    Sil
-                  </button>
-                </div>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                {FIELDS.map((f) => (
-                  <label
-                    key={f.key}
-                    className={f.textarea ? 'sm:col-span-2 block' : 'block'}
-                  >
-                    <span className="text-sm font-medium text-ink">{f.label}</span>
-                    {f.textarea ? (
-                      <textarea
-                        value={p[f.key]}
-                        onChange={(e) => setField(i, f.key, e.target.value)}
-                        rows={2}
-                        className="mt-1 w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand"
-                      />
-                    ) : (
-                      <input
-                        value={p[f.key]}
-                        onChange={(e) => setField(i, f.key, e.target.value)}
-                        className="mt-1 w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand"
-                      />
-                    )}
-                    {f.hint && (
-                      <span className="mt-1 block text-xs text-muted">{f.hint}</span>
-                    )}
-                  </label>
-                ))}
-              </div>
-            </div>
+              {t.icon}
+              {t.label}
+            </button>
           ))}
+        </nav>
+        <div className="border-t border-line p-3">
+          <button
+            onClick={logout}
+            className="w-full rounded-lg px-3 py-2 text-left text-sm text-muted transition hover:bg-surface"
+          >
+            Çıkış Yap
+          </button>
+        </div>
+      </aside>
+
+      {/* İçerik */}
+      <div className="min-w-0 flex-1">
+        {/* Mobil sekme çubuğu */}
+        <div className="flex items-center gap-1 overflow-x-auto border-b border-line bg-background p-2 md:hidden">
+          {TABS.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setTab(t.id)}
+              className={`whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium ${
+                tab === t.id ? 'bg-brand text-white' : 'text-ink'
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+          <button onClick={logout} className="ml-auto whitespace-nowrap px-3 py-2 text-sm text-muted">
+            Çıkış
+          </button>
         </div>
 
-        <p className="mt-8 text-xs text-muted">
-          Not: Görsel dosyalarını (webp) GitHub’da <code>public/media/products/</code>{' '}
-          klasörüne ayrıca yüklemelisin; buradaki “Görsel Yolu” o dosyayı işaret eder.
-        </p>
+        {tab === 'products' && <ProductManager password={password} />}
+        {tab === 'costs' && <CostManager />}
       </div>
-    </main>
+    </div>
+  )
+}
+
+/* --- Sidebar ikonları --- */
+function BoxIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true">
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+      <path d="m3.3 7 8.7 5 8.7-5M12 22V12" />
+    </svg>
+  )
+}
+function WalletIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true">
+      <path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V5" />
+      <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
+      <path d="M18 12a1 1 0 0 0 0 2h3v-2Z" />
+    </svg>
   )
 }
