@@ -20,7 +20,7 @@
   {
     "id": "sirdan",
     "name": "Şırdan",
-    "description": "Taze, temizlenmiş, doldurulmaya hazır.",
+    "description": "Taze, temizlenmiş, çiğ ve yara pişmiş şeklinde gönderilir",
     "minOrder": "20 kg",
     "image": "",
     "imageAlt": "taze-toptan-sirdan",
@@ -34,5 +34,14 @@
     "image": "https://www.jidlonacestach.cz/wp-content/uploads/2022/09/IMG_20220911_085946-scaled.jpg",
     "imageAlt": "taze-toptan-midye",
     "waMessage": "Merhaba, toptan midye fiyatı almak istiyorum."
+  },
+  {
+    "id": "mumbar",
+    "name": "Mumbar ",
+    "description": "Porsiyonlanmış bir şekilde gönderilir 200 gram\nSatışta mevcuttur",
+    "minOrder": "20 kg",
+    "image": "/media/products/",
+    "imageAlt": "",
+    "waMessage": "Merhaba, toptan ürün fiyatı almak istiyorum."
   }
 ]
