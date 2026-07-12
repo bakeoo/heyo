@@ -103,7 +103,7 @@ export default function ProductManager({ password }: { password: string }) {
   }
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8">
+    <div className="mx-auto max-w-5xl p-4 sm:p-6 lg:p-8">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="font-heading text-2xl font-bold text-ink">Ürün Yönetimi</h1>
