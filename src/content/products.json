@@ -4,7 +4,7 @@
     "name": "Kokoreç (Çiğ)",
     "description": "Günlük taze kesim, temizlenmiş, vakumlu paket.",
     "minOrder": "20 kg",
-    "image": "https://www.globalcountrymeats.com/wp-content/uploads/2021/03/howTo_kokorec.jpg",
+    "image": "https://cdn.shopier.app/pictures_large/kokoyiin_82a144cf0e1b9ec840fe38ec8998aa83.jpg",
     "imageAlt": "taze-toptan-cig-kokorec",
     "waMessage": "Merhaba, toptan çiğ kokoreç fiyatı almak istiyorum."
   },
@@ -13,7 +13,7 @@
     "name": "Kokoreç (Pişmiş / Hazır)",
     "description": "Lezzet garantili, servise hazır, soğuk zincir.",
     "minOrder": "20 kg",
-    "image": "/media/products/kokorec-pismis.webp",
+    "image": "https://www.globalcountrymeats.com/wp-content/uploads/2021/03/howTo_kokorec.jpg",
     "imageAlt": "toptan-hazir-pismis-kokorec",
     "waMessage": "Merhaba, toptan hazır kokoreç fiyatı almak istiyorum."
   },
@@ -22,7 +22,7 @@
     "name": "Şırdan",
     "description": "Taze, temizlenmiş, doldurulmaya hazır.",
     "minOrder": "20 kg",
-    "image": "/media/products/sirdan.webp",
+    "image": "",
     "imageAlt": "taze-toptan-sirdan",
     "waMessage": "Merhaba, toptan şırdan fiyatı almak istiyorum."
   },
