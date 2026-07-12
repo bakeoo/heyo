@@ -1,8 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import initialProducts from '@/content/products.json'
 import type { Product } from '@/content/products'
+
+// Ürünleri GitHub'dan CANLI çek (build anındaki eski kopya yerine).
+// Böylece editör her zaman güncel hali gösterir, kaydederken üstüne yazma olmaz.
+const REPO = 'bakeoo/heyo'
+const BRANCH = 'claude/bold-ptolemy-gwqf2z'
+const LIVE_URL = `https://api.github.com/repos/${REPO}/contents/src/content/products.json?ref=${encodeURIComponent(BRANCH)}`
 
 const EMPTY: Product = {
   id: '',
@@ -42,8 +48,32 @@ const FIELDS: { key: keyof Product; label: string; textarea?: boolean; hint?: st
  */
 export default function ProductManager({ password }: { password: string }) {
   const [busy, setBusy] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [status, setStatus] = useState<{ type: 'ok' | 'err'; text: string } | null>(null)
   const [products, setProducts] = useState<Product[]>(initialProducts as Product[])
+
+  // Açılışta GitHub'dan en güncel ürünleri çek
+  useEffect(() => {
+    let alive = true
+    ;(async () => {
+      try {
+        const res = await fetch(LIVE_URL, {
+          headers: { Accept: 'application/vnd.github.raw' },
+          cache: 'no-store',
+        })
+        if (res.ok) {
+          const data = await res.json()
+          if (alive && Array.isArray(data) && data.length) setProducts(data)
+        }
+      } catch {
+        /* çevrimdışı / hata: build kopyası kullanılır */
+      }
+      if (alive) setLoading(false)
+    })()
+    return () => {
+      alive = false
+    }
+  }, [])
 
   function setField(i: number, key: keyof Product, value: string) {
     setProducts((ps) => ps.map((p, idx) => (idx === i ? { ...p, [key]: value } : p)))
@@ -108,14 +138,26 @@ export default function ProductManager({ password }: { password: string }) {
         <div>
           <h1 className="font-heading text-2xl font-bold text-ink">Ürün Yönetimi</h1>
           <p className="text-sm text-muted">
-            {products.length} ürün · değişiklikler <strong>Kaydet</strong> ile canlıya yansır.
+            {loading
+              ? 'Güncel veriler yükleniyor…'
+              : `${products.length} ürün · değişiklikler `}
+            {!loading && <strong>Kaydet</strong>}
+            {!loading && ' ile canlıya yansır (~1-2 dk).'}
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <button onClick={addProduct} className="btn-outline px-4 py-2 text-sm">
+          <button
+            onClick={addProduct}
+            disabled={loading}
+            className="btn-outline px-4 py-2 text-sm disabled:opacity-50"
+          >
             + Ürün Ekle
           </button>
-          <button onClick={handleSave} disabled={busy} className="btn-brand px-4 py-2 text-sm">
+          <button
+            onClick={handleSave}
+            disabled={busy || loading}
+            className="btn-brand px-4 py-2 text-sm disabled:opacity-50"
+          >
             {busy ? 'Kaydediliyor…' : 'Kaydet'}
           </button>
         </div>
