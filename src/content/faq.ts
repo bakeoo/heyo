@@ -8,7 +8,7 @@ export const GENERAL_FAQ: FaqItem[] = [
   {
     question: 'Minimum sipariş miktarı nedir?',
     answer:
-      'Toptan siparişlerimizde ürün başına minimum 20 kg’dan başlıyoruz. İhtiyacınıza göre düzenli veya tek seferlik tedarik planlayabiliriz.',
+      'Ürüne göre değişir: kokoreç ve şırdanda 20 kg’dan, midyede daha esnek miktarlardan başlıyoruz. İhtiyacınıza göre düzenli veya tek seferlik tedarik planlayabiliriz.',
   },
   {
     question: 'Türkiye’nin her yerine gönderim yapıyor musunuz?',
@@ -38,7 +38,7 @@ export const GENERAL_FAQ: FaqItem[] = [
   {
     question: 'Hangi ürünleri tedarik ediyorsunuz?',
     answer:
-      'Toptan şırdan, çiğ kokoreç ve pişmiş (servise hazır) kokoreç tedariği yapıyoruz. Tüm ürünler temizlenmiş ve toptan alıcıya uygun şekilde paketlenmiştir.',
+      'Toptan şırdan, çiğ kokoreç, pişmiş (servise hazır) kokoreç ve midye tedariği yapıyoruz. Tüm ürünler temizlenmiş ve toptan alıcıya uygun şekilde paketlenmiştir.',
   },
   {
     question: 'Düzenli tedarik anlaşması yapabilir miyim?',

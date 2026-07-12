@@ -14,12 +14,12 @@ const CRUMBS = [
 ]
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Sıkça Sorulan Sorular (SSS) | Toptan Kokoreç & Şırdan | ŞIRDANCI ADO',
+  title: 'Sıkça Sorulan Sorular (SSS) | Toptan Kokoreç, Şırdan, Midye | ŞIRDANCI ADO',
   description:
-    'Toptan kokoreç ve şırdan siparişi, minimum miktar, kargo, fatura ve teslimat hakkında sık sorulan sorular ve yanıtları.',
+    'Toptan kokoreç, şırdan ve midye siparişi, minimum miktar, kargo, fatura ve teslimat hakkında sık sorulan sorular ve yanıtları.',
   path: '/sss',
   keywords:
-    'toptan kokoreç sss, toptan şırdan sipariş, minimum sipariş miktarı, toptan sakatat kargo, faturalı toptan et',
+    'toptan kokoreç sss, toptan şırdan sipariş, toptan midye, minimum sipariş miktarı, toptan sakatat kargo',
 })
 
 export default function SssPage() {

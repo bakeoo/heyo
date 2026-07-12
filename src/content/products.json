@@ -29,10 +29,10 @@
   {
     "id": "toptan-midye",
     "name": "Toptan Midye",
-    "description": "toptan midye",
-    "minOrder": "5kg",
+    "description": "Taze, temizlenmiş toptan midye — midye dolma ve tava için ideal.",
+    "minOrder": "5 kg",
     "image": "https://www.jidlonacestach.cz/wp-content/uploads/2022/09/IMG_20220911_085946-scaled.jpg",
-    "imageAlt": "asf",
+    "imageAlt": "taze-toptan-midye",
     "waMessage": "Merhaba, toptan midye fiyatı almak istiyorum."
   }
 ]

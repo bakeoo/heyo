@@ -18,8 +18,8 @@ import { WhatsAppIcon, PhoneIcon } from '@/components/icons'
  * @param subtitle Alt başlık metni.
  */
 export default function Hero({
-  title = 'Türkiye Geneli Toptan Kokoreç ve Şırdan Tedarikçisi',
-  subtitle = 'Günlük taze kesim | Soğuk zincir kargo | Fatura kesiyoruz | Minimum siparişten itibaren',
+  title = 'Türkiye Geneli Toptan Kokoreç, Şırdan ve Midye Tedarikçisi',
+  subtitle = 'Günlük taze | Soğuk zincir kargo | Fatura kesiyoruz | Minimum siparişten itibaren',
 }: {
   title?: string
   subtitle?: string

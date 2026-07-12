@@ -19,7 +19,7 @@ function cityFaq(city: string): FaqItem[] {
   return [
     {
       question: `${city} için toptan teslimat yapıyor musunuz?`,
-      answer: `Evet, ${city} ve çevresine soğuk zincir kargo ile toptan kokoreç ve şırdan teslimatı yapıyoruz; ürünler tazeliğini koruyarak adresinize ulaşır.`,
+      answer: `Evet, ${city} ve çevresine soğuk zincir kargo ile toptan kokoreç, şırdan ve midye teslimatı yapıyoruz; ürünler tazeliğini koruyarak adresinize ulaşır.`,
     },
     {
       question: `${city} için minimum sipariş miktarı ve fiyat nasıl?`,
@@ -74,6 +74,12 @@ export default function CityPage({ city }: { city: CityContent }) {
               className="btn-outline px-5 py-2.5 text-sm"
             >
               Toptan Kokoreç
+            </Link>
+            <Link
+              href="/toptan-midye"
+              className="btn-outline px-5 py-2.5 text-sm"
+            >
+              Toptan Midye
             </Link>
           </div>
         </Container>

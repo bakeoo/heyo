@@ -24,9 +24,9 @@ export default function Footer() {
               <span className="text-brand">●</span> {BRAND_NAME}
             </p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed">
-              Türkiye geneli toptan kokoreç ve şırdan tedarikçisi. Günlük taze
-              kesim, soğuk zincir kargo ve faturalı teslimat ile işletmenizin
-              güvenilir çözüm ortağı.
+              Türkiye geneli toptan kokoreç, şırdan ve midye tedarikçisi. Günlük
+              taze ürün, soğuk zincir kargo ve faturalı teslimat ile
+              işletmenizin güvenilir çözüm ortağı.
             </p>
           </div>
 
@@ -58,7 +58,7 @@ export default function Footer() {
                     href={`/toptan/${loc.slug}`}
                     className="transition hover:text-white"
                   >
-                    {loc.city} Toptan Kokoreç &amp; Şırdan
+                    {loc.city} Toptan Kokoreç, Şırdan, Midye
                   </Link>
                 </li>
               ))}

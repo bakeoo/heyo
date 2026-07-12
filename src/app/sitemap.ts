@@ -20,6 +20,7 @@ const STATIC_ROUTES: Route[] = [
   { path: '/', priority: 1.0, changeFrequency: 'weekly' },
   { path: '/toptan-sirdan', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/toptan-kokorec', priority: 0.9, changeFrequency: 'weekly' },
+  { path: '/toptan-midye', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/sss', priority: 0.6, changeFrequency: 'monthly' },
 ]
 

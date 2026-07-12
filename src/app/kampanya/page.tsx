@@ -11,9 +11,9 @@ import Container from '@/components/ui/Container'
 
 // Kampanya sayfası metadata (noindex — sadece reklam trafiği)
 export const metadata: Metadata = buildMetadata({
-  title: `Toptan Kokoreç & Şırdan - Hemen Fiyat Al | ${BRAND_NAME}`,
+  title: `Toptan Kokoreç, Şırdan & Midye - Hemen Fiyat Al | ${BRAND_NAME}`,
   description:
-    'Toptan kokoreç ve şırdan ihtiyacınız için hemen WhatsApp’tan fiyat alın. Günlük taze, soğuk zincir, Türkiye geneli kargo, faturalı teslimat.',
+    'Toptan kokoreç, şırdan ve midye ihtiyacınız için hemen WhatsApp’tan fiyat alın. Günlük taze, soğuk zincir, Türkiye geneli kargo, faturalı teslimat.',
   path: '/kampanya',
   noindex: true,
 })
@@ -34,7 +34,7 @@ export default function KampanyaPage() {
       <main>
         {/* Reklam metnine uygun başlık */}
         <Hero
-          title="Toptan Kokoreç ve Şırdan — Hemen Fiyat Alın"
+          title="Toptan Kokoreç, Şırdan ve Midye — Hemen Fiyat Alın"
           subtitle="Günlük taze, soğuk zincir kargo, faturalı teslimat. Türkiye'nin her yerine toptan tedarik. WhatsApp'tan dakikalar içinde fiyat alın."
         />
 

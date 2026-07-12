@@ -18,7 +18,7 @@ export const SITE_URL = `https://${DOMAIN}`
 // ---- Marka ----
 export const BRAND_NAME = 'ŞIRDANCI ADO'
 export const BRAND_DESCRIPTION =
-  'Türkiye geneli toptan kokoreç ve şırdan tedarikçisi'
+  'Türkiye geneli toptan kokoreç, şırdan ve midye tedarikçisi'
 // Logo (256px optimize WebP). Kaynak: public/media/brand/logo_ado.png
 export const BRAND_LOGO = '/media/brand/logo.webp'
 
@@ -43,6 +43,7 @@ export const WA_MESSAGES = {
   kokorecCig: 'Merhaba, toptan çiğ kokoreç fiyatı almak istiyorum.',
   kokorecPismis: 'Merhaba, toptan hazır kokoreç fiyatı almak istiyorum.',
   sirdan: 'Merhaba, toptan şırdan fiyatı almak istiyorum.',
+  midye: 'Merhaba, toptan midye fiyatı almak istiyorum.',
 } as const
 
 // ---- Navigasyon (section anchor'ları / ileride gerçek rotalar) ----
@@ -54,7 +55,7 @@ export interface NavLink {
 export const NAV_LINKS: NavLink[] = [
   { href: '/toptan-sirdan', label: 'Toptan Şırdan' },
   { href: '/toptan-kokorec', label: 'Toptan Kokoreç' },
-  { href: '/#neden-biz', label: 'Neden Biz' },
+  { href: '/toptan-midye', label: 'Toptan Midye' },
   { href: '/sss', label: 'SSS' },
   { href: '/#iletisim', label: 'İletişim' },
 ]

@@ -30,12 +30,12 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Toptan Kokoreç ve Şırdan | ŞIRDANCI ADO | Türkiye Geneli',
+  title: 'Toptan Kokoreç, Şırdan ve Midye | ŞIRDANCI ADO | Türkiye Geneli',
   description:
-    'Türkiye geneli toptan kokoreç ve şırdan tedarikçisi. Günlük taze kesim, soğuk zincir kargo, fatura kesilir. WhatsApp ile hemen fiyat alın.',
+    'Türkiye geneli toptan kokoreç, şırdan ve midye tedarikçisi. Günlük taze, soğuk zincir kargo, fatura kesilir. WhatsApp ile hemen fiyat alın.',
   path: '/',
   keywords:
-    'toptan kokoreç, şırdan toptan, kokoreç tedarikçi, toptan sakatat, kokoreçci malzeme, toptan şırdan fiyatı',
+    'toptan kokoreç, şırdan toptan, toptan midye, kokoreç tedarikçi, toptan sakatat, kokoreçci malzeme, toptan şırdan fiyatı, midye dolma toptan',
 })
 
 export default function RootLayout({

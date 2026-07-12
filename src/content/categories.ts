@@ -141,6 +141,58 @@ export const CATEGORIES: CategoryContent[] = [
     ],
     waMessage: WA_MESSAGES.general,
   },
+  {
+    slug: 'toptan-midye',
+    name: 'Toptan Midye',
+    metaTitle: 'Toptan Midye | Midye Dolma & Tava İçin Tedarikçi | ŞIRDANCI ADO',
+    metaDescription:
+      'Toptan midye tedarikçisi. Midye dolma ve tava için taze, temizlenmiş midye. Türkiye geneli soğuk zincir kargo, faturalı teslimat. WhatsApp’tan toptan midye fiyatı alın.',
+    keywords:
+      'toptan midye, toptan midye fiyatları, midye dolma toptan, midye tedarikçisi, taze midye toptan, toptan midye dolma',
+    h1: 'Toptan Midye Tedarikçisi',
+    heroSubtitle:
+      'Midye dolma ve tava için taze, temizlenmiş midye — Türkiye geneli soğuk zincir kargo ve faturalı teslimat.',
+    intro: [
+      'ŞIRDANCI ADO olarak büfe, lokanta ve midyecilere Türkiye geneli toptan midye tedariği yapıyoruz. Ürünlerimiz taze, temizlenmiş ve midye dolma ile tava için kullanıma hazır olarak gelir; soğuk zincir bozulmadan işletmenize ulaşır.',
+      'Toptan midye fiyatlarımız işletmenizin kârlılığını gözetecek şekilde rekabetçidir. Minimum sipariş miktarından itibaren düzenli veya tek seferlik tedarik sağlıyor, her sevkiyatta fatura ve gerekli gıda belgelerini eksiksiz sunuyoruz.',
+      'Sezonluk yoğunluk ve talep miktarınıza göre esnek tedarik planı kurabiliriz. Fiyat için WhatsApp’tan yazmanız ya da telefonla aramanız yeterli.',
+    ],
+    highlights: [
+      { title: 'Taze & Temizlenmiş', text: 'Kullanıma hazır, ayıklanmış midye; mutfakta ek işçilik azalır.' },
+      { title: 'Dolma & Tava İçin', text: 'Midye dolma ve midye tava için uygun boy ve kalite.' },
+      { title: 'Soğuk Zincir Kargo', text: 'Türkiye geneli bozulmadan, soğuk zincirle sevkiyat.' },
+      { title: 'Faturalı & Belgeli', text: 'Resmi fatura ve gıda güvenliği belgeleriyle teslim.' },
+    ],
+    productIds: ['toptan-midye'],
+    faq: [
+      {
+        question: 'Toptan midye minimum sipariş miktarı nedir?',
+        answer:
+          'Toptan midye siparişlerinde işletmenizin ihtiyacına göre esnek miktarlarla çalışıyoruz. Güncel minimum miktar ve fiyat için WhatsApp’tan yazın.',
+      },
+      {
+        question: 'Midye dolma için uygun mu?',
+        answer:
+          'Evet. Midyelerimiz temizlenmiş ve dolma ile tava için uygun boyda tedarik edilir; mutfakta ek hazırlık yükünüzü azaltır.',
+      },
+      {
+        question: 'Türkiye’nin her yerine midye gönderiyor musunuz?',
+        answer:
+          'Evet, Türkiye geneli soğuk zincir kargo ile sevkiyat yapıyoruz. Ürünler tazeliğini koruyarak adresinize ulaşır.',
+      },
+      {
+        question: 'Toptan midye fiyatını nasıl öğrenebilirim?',
+        answer:
+          'Fiyatlar güncel piyasaya ve miktara göre belirlenir. WhatsApp’tan yazmanız veya telefonla aramanız yeterli; size özel toptan fiyat teklifini hemen iletiriz.',
+      },
+      {
+        question: 'Fatura ve gıda belgesi veriyor musunuz?',
+        answer:
+          'Her sevkiyatta resmi fatura ve gerekli gıda güvenliği belgelerini eksiksiz sunuyoruz.',
+      },
+    ],
+    waMessage: WA_MESSAGES.midye,
+  },
 ]
 
 /** Slug'a göre kategori bul (statik sayfa üretiminde kullanılır). */
