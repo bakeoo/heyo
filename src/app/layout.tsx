@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Oswald } from 'next/font/google'
 import './globals.css'
 import { buildMetadata, localBusinessJsonLd } from '@/lib/seo'
@@ -22,6 +22,13 @@ const oswald = Oswald({
  * Site geneli / ana sayfa metadata'sı. Alt sayfalar kendi `metadata`'sını
  * export ederek bunu geçersiz kılar.
  */
+// Mobil tarayıcı çubuğu rengi + viewport (yakınlaştırma serbest — erişilebilirlik)
+export const viewport: Viewport = {
+  themeColor: '#ffffff',
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export const metadata: Metadata = buildMetadata({
   title: 'Toptan Kokoreç ve Şırdan | ŞIRDANCI ADO | Türkiye Geneli',
   description:

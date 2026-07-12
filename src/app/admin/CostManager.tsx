@@ -275,7 +275,9 @@ export default function CostManager() {
             Bu ay için henüz kayıt yok. Yukarıdan ekleyebilirsin.
           </p>
         ) : (
-          <div className="overflow-x-auto rounded-card border border-line bg-background shadow-soft">
+          <>
+          {/* Masaüstü: tablo */}
+          <div className="hidden overflow-x-auto rounded-card border border-line bg-background shadow-soft sm:block">
             <table className="w-full min-w-[520px] text-sm">
               <thead>
                 <tr className="border-b border-line text-left text-muted">
@@ -318,6 +320,36 @@ export default function CostManager() {
               </tbody>
             </table>
           </div>
+
+          {/* Mobil: kart listesi */}
+          <div className="space-y-3 sm:hidden">
+            {monthEntries.map((e) => (
+              <div key={e.id} className="rounded-card border border-line bg-background p-4 shadow-soft">
+                <div className="flex items-center justify-between gap-3">
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                      e.type === 'gelir' ? 'bg-whatsapp/15 text-whatsapp' : 'bg-brand/10 text-brand'
+                    }`}
+                  >
+                    {e.type === 'gelir' ? 'Gelir' : 'Gider'}
+                  </span>
+                  <span className={`font-heading text-lg font-bold ${e.type === 'gelir' ? 'text-whatsapp' : 'text-ink'}`}>
+                    {e.type === 'gelir' ? '+' : '−'}
+                    {fmt(e.amount)}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm font-medium text-ink">{e.category}</p>
+                {e.description && <p className="text-sm text-muted">{e.description}</p>}
+                <div className="mt-2 flex items-center justify-between text-xs text-muted">
+                  <span>{e.date}</span>
+                  <button onClick={() => remove(e.id)} className="text-brand hover:underline">
+                    Sil
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          </>
         )}
       </div>
 

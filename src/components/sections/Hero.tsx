@@ -65,20 +65,20 @@ export default function Hero({
       />
 
       {/* İçerik */}
-      <Container className="relative z-10 py-20 text-white">
-        <h1 className="max-w-4xl text-h1-m font-bold leading-tight sm:text-h1-d">
+      <Container className="relative z-10 py-16 text-white sm:py-20">
+        <h1 className="max-w-4xl text-[2.25rem] font-bold leading-[1.08] sm:text-5xl lg:text-h1-d">
           {title}
         </h1>
-        <p className="mt-6 max-w-2xl text-lg text-white/90 sm:text-xl">
+        <p className="mt-5 max-w-2xl text-base text-white/90 sm:mt-6 sm:text-xl">
           {subtitle}
         </p>
 
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+        <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
           <ContactLink
             channel="whatsapp"
             message={WA_MESSAGES.general}
             location="hero"
-            className="btn-whatsapp text-lg"
+            className="btn-whatsapp w-full text-base sm:w-auto sm:text-lg"
           >
             <WhatsAppIcon className="h-6 w-6" />
             WhatsApp&apos;tan Fiyat Al
@@ -86,7 +86,7 @@ export default function Hero({
           <ContactLink
             channel="phone"
             location="hero"
-            className="btn-outline-white text-lg"
+            className="btn-outline-white w-full text-base sm:w-auto sm:text-lg"
           >
             <PhoneIcon className="h-6 w-6" />
             Hemen Ara

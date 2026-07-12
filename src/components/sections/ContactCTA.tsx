@@ -16,7 +16,7 @@ export default function ContactCTA() {
           <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-white/80">
             Bize Ulaşın
           </span>
-          <h2 className="text-h2-m font-bold sm:text-h2-d">Hemen Teklif Al</h2>
+          <h2 className="text-3xl font-bold sm:text-4xl lg:text-h2-d">Hemen Teklif Al</h2>
           <p className="mx-auto mt-4 max-w-2xl text-white/90">
             Toptan kokoreç ve şırdan ihtiyaçlarınız için bizimle iletişime geçin,
             size özel fiyat teklifini hemen alın.

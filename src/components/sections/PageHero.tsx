@@ -30,20 +30,20 @@ export default function PageHero({
         className="pointer-events-none absolute -bottom-32 -left-16 h-72 w-72 rounded-full bg-brand/10 blur-3xl"
       />
 
-      <Container className="relative py-16 sm:py-20 lg:py-24">
-        <h1 className="max-w-3xl text-h1-m font-bold leading-tight sm:text-[3.25rem]">
+      <Container className="relative py-14 sm:py-20 lg:py-24">
+        <h1 className="max-w-3xl text-[2rem] font-bold leading-[1.1] sm:text-4xl lg:text-5xl">
           {title}
         </h1>
-        <p className="mt-5 max-w-2xl text-lg text-white/85 sm:text-xl">
+        <p className="mt-4 max-w-2xl text-base text-white/85 sm:mt-5 sm:text-xl">
           {subtitle}
         </p>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+        <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4">
           <ContactLink
             channel="whatsapp"
             message={waMessage}
             location={location}
-            className="btn-whatsapp text-lg"
+            className="btn-whatsapp w-full text-base sm:w-auto sm:text-lg"
           >
             <WhatsAppIcon className="h-6 w-6" />
             WhatsApp&apos;tan Fiyat Al
@@ -51,7 +51,7 @@ export default function PageHero({
           <ContactLink
             channel="phone"
             location={location}
-            className="btn-outline-white text-lg"
+            className="btn-outline-white w-full text-base sm:w-auto sm:text-lg"
           >
             <PhoneIcon className="h-6 w-6" />
             Hemen Ara

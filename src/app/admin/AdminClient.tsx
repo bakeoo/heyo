@@ -116,7 +116,7 @@ export default function AdminClient() {
       {/* İçerik */}
       <div className="min-w-0 flex-1">
         {/* Mobil sekme çubuğu */}
-        <div className="flex items-center gap-1 overflow-x-auto border-b border-line bg-background p-2 md:hidden">
+        <div className="sticky top-0 z-10 flex items-center gap-1 overflow-x-auto border-b border-line bg-background/95 p-2 backdrop-blur md:hidden">
           {TABS.map((t) => (
             <button
               key={t.id}

@@ -43,9 +43,9 @@
     @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
   }
 
-  /* Section dikey boşlukları */
+  /* Section dikey boşlukları (mobilde biraz daha derli toplu) */
   .section {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-14 sm:py-20 lg:py-24;
   }
 
   /* Buton temel stili */
@@ -75,9 +75,9 @@
     @apply btn border-2 border-brand bg-transparent text-brand hover:bg-brand hover:text-white;
   }
 
-  /* H2 section başlıkları için ortak stil */
+  /* H2 section başlıkları için ortak stil (mobilde oranlı ölçek) */
   .h2-title {
-    @apply text-h2-m sm:text-h2-d text-ink;
+    @apply text-3xl text-ink sm:text-4xl lg:text-h2-d;
   }
 
   /* Section üstü küçük etiket */

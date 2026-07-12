@@ -151,7 +151,7 @@ export default function Header({ minimal = false }: { minimal?: boolean }) {
         <nav
           id="mobile-menu"
           aria-label="Mobil menü"
-          className="border-t border-line bg-background md:hidden"
+          className="border-t border-line bg-background shadow-lg md:hidden"
         >
           <Container className="flex flex-col py-3">
             {NAV_LINKS.map((link) => (
