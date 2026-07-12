@@ -1,6 +1,6 @@
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import WhatsAppFloat from '@/components/layout/WhatsAppFloat'
+import FloatingActions from '@/components/layout/FloatingActions'
 
 /**
  * Standart sayfa iskeleti: Header + <main> + Footer + sabit WhatsApp butonu.
@@ -13,7 +13,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       <Header />
       <main>{children}</main>
       <Footer />
-      <WhatsAppFloat />
+      <FloatingActions />
     </>
   )
 }

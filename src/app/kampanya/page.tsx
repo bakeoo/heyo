@@ -3,7 +3,7 @@ import { BRAND_NAME, DOMAIN } from '@/config/site'
 import { TRUST_POINTS } from '@/content/home'
 import { buildMetadata } from '@/lib/seo'
 import Header from '@/components/layout/Header'
-import WhatsAppFloat from '@/components/layout/WhatsAppFloat'
+import FloatingActions from '@/components/layout/FloatingActions'
 import Hero from '@/components/sections/Hero'
 import Products from '@/components/sections/Products'
 import ContactCTA from '@/components/sections/ContactCTA'
@@ -66,8 +66,8 @@ export default function KampanyaPage() {
         </p>
       </footer>
 
-      {/* Sabit WhatsApp butonu */}
-      <WhatsAppFloat />
+      {/* Sabit WhatsApp + Instagram butonları */}
+      <FloatingActions />
     </>
   )
 }

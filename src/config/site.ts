@@ -32,6 +32,10 @@ export const PHONE_DISPLAY = '+90 546 432 4625'
 // Adres sonra eklenecek. Placeholder ([...]) olduğu sürece sitede gösterilmez.
 export const ADDRESS = '[ADRES]'
 
+// ---- Sosyal medya ----
+export const INSTAGRAM_HANDLE = 'sirdanciado'
+export const INSTAGRAM_URL = `https://instagram.com/${INSTAGRAM_HANDLE}`
+
 // ---- Teslimat ----
 export const DELIVERY_SCOPE = 'Türkiye geneli (soğuk zincirle kargo)'
 
