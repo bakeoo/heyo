@@ -31,7 +31,7 @@ export default function PageHero({
       />
 
       <Container className="relative py-14 sm:py-20 lg:py-24">
-        <h1 className="max-w-3xl text-[2rem] font-bold leading-[1.1] sm:text-4xl lg:text-5xl">
+        <h1 className="max-w-3xl text-[2rem] font-bold leading-[1.18] sm:text-4xl sm:leading-[1.12] lg:text-5xl">
           {title}
         </h1>
         <p className="mt-4 max-w-2xl text-base text-white/85 sm:mt-5 sm:text-xl">

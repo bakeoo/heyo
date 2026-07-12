@@ -66,10 +66,10 @@ export default function Hero({
 
       {/* İçerik */}
       <Container className="relative z-10 py-16 text-white sm:py-20">
-        <h1 className="max-w-4xl text-[2.25rem] font-bold leading-[1.08] sm:text-5xl lg:text-h1-d">
+        <h1 className="max-w-4xl text-[2.25rem] font-bold leading-[1.18] sm:text-5xl sm:leading-[1.12] lg:text-h1-d">
           {title}
         </h1>
-        <p className="mt-5 max-w-2xl text-base text-white/90 sm:mt-6 sm:text-xl">
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/90 sm:mt-7 sm:text-xl">
           {subtitle}
         </p>
 
