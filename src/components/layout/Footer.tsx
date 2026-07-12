@@ -5,11 +5,14 @@ import {
   PHONE_DISPLAY,
   ADDRESS,
   NAV_LINKS,
+  INSTAGRAM_URL,
+  INSTAGRAM_HANDLE,
   isPlaceholder,
 } from '@/config/site'
 import { LOCATIONS } from '@/content/locations'
 import Container from '@/components/ui/Container'
 import ContactLink from '@/components/ui/ContactLink'
+import { InstagramIcon } from '@/components/icons'
 
 export default function Footer() {
   const year = 2026 // güncel yıl; gerekirse elle güncellenebilir
@@ -88,6 +91,17 @@ export default function Footer() {
                 >
                   Telefon: <span dir="ltr">{PHONE_DISPLAY}</span>
                 </ContactLink>
+              </li>
+              <li>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 transition hover:text-white"
+                >
+                  <InstagramIcon className="h-4 w-4" />
+                  Instagram: @{INSTAGRAM_HANDLE}
+                </a>
               </li>
               {/* Adres ancak gerçek değer girildiğinde gösterilir */}
               {!isPlaceholder(ADDRESS) && <li>Adres: {ADDRESS}</li>}

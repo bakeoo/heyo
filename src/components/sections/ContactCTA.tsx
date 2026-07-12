@@ -1,8 +1,13 @@
-import { PHONE_DISPLAY, WA_MESSAGES } from '@/config/site'
+import {
+  PHONE_DISPLAY,
+  WA_MESSAGES,
+  INSTAGRAM_URL,
+  INSTAGRAM_HANDLE,
+} from '@/config/site'
 import Section from '@/components/ui/Section'
 import Container from '@/components/ui/Container'
 import ContactLink from '@/components/ui/ContactLink'
-import { WhatsAppIcon, PhoneIcon } from '@/components/icons'
+import { WhatsAppIcon, PhoneIcon, InstagramIcon } from '@/components/icons'
 
 /**
  * İletişim / CTA section.
@@ -57,6 +62,19 @@ export default function ContactCTA() {
             </ContactLink>
           </div>
         </div>
+
+        {/* Instagram takip */}
+        <p className="mt-8 text-center">
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-white/90 transition hover:text-white"
+          >
+            <InstagramIcon className="h-5 w-5" />
+            Bizi Instagram’da takip edin: @{INSTAGRAM_HANDLE}
+          </a>
+        </p>
       </Container>
     </Section>
   )
